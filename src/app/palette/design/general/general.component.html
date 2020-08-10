@@ -1,0 +1,23 @@
+<ngx-mat-color-picker
+  #backgroundColor
+  [touchUi]="true"
+  [color]="backgroundColor">
+</ngx-mat-color-picker>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>General</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Background</mat-label>
+        <input
+          matInput
+          [ngxMatColorPicker]="backgroundColor"
+          formControlName="backgroundColor">
+        <ngx-mat-color-toggle matSuffix [for]="backgroundColor">
+        </ngx-mat-color-toggle>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>

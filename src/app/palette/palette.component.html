@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>{{ title }}</span>
+    <app-spacer></app-spacer>
+    <button mat-icon-button matTooltip="Open file" aria-label="Open file">
+      <mat-icon>folder</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Save file" aria-label="Save file">
+      <mat-icon>save</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-tab-group>
+  <mat-tab label="Design">
+    <app-palette-design></app-palette-design>
+  </mat-tab>
+  <mat-tab label="JSON">
+    <app-palette-json></app-palette-json>
+  </mat-tab>
+</mat-tab-group>

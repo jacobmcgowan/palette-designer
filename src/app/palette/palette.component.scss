@@ -1,0 +1,13 @@
+:host {
+  width: 100%;
+}
+
+mat-toolbar {
+  width: 100%;
+
+  mat-toolbar-row {
+    button {
+      margin: 0px 16px 0px 16px;
+    }
+  }
+}
