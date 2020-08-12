@@ -40,9 +40,9 @@ export const INITIAL_STATE: IAppState = {
       },
       primary: {
         background: {
-          r: 117,
-          g: 117,
-          b: 117,
+          r: 103,
+          g: 58,
+          b: 183,
           a: 1.0,
         },
         text: {

@@ -14,4 +14,8 @@ export class Color implements IColor {
   g: number;
   b: number;
   a: number;
+
+  get rgba(): string {
+    return `rgba(${this.r},${this.g},${this.b},${this.a})`;
+  }
 }

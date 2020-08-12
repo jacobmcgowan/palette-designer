@@ -25,6 +25,7 @@ import { IAppState, INITIAL_STATE, rootReducer } from './store';
 import { JsonComponent } from './palette/json/json.component';
 import { PaletteComponent } from './palette/palette.component';
 import { SpacerComponent } from './shared/spacer/spacer.component';
+import { PreviewComponent } from './palette/design/preview/preview.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SpacerComponent } from './shared/spacer/spacer.component';
     JsonComponent,
     PaletteComponent,
     SpacerComponent,
+    PreviewComponent,
   ],
   imports: [
     BrowserAnimationsModule,

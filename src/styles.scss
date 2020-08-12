@@ -5,4 +5,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 mat-card {
   margin: 8px;
+
+  mat-card-header {
+    .mat-card-header-text {
+      margin: 0;
+    }
+  }
 }
