@@ -1,7 +1,7 @@
 import { IColor } from './i-color';
 
 export class Color implements IColor {
-  constructor(other?: Color) {
+  constructor(other?: IColor) {
     if (other) {
       this.r = other.r;
       this.g = other.g;

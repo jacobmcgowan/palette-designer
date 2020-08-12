@@ -2,21 +2,108 @@
   #backgroundColor
   [touchUi]="true">
 </ngx-mat-color-picker>
+<ngx-mat-color-picker
+  #textOnBackgroundColor
+  [touchUi]="true">
+</ngx-mat-color-picker>
+<ngx-mat-color-picker
+  #surfaceColor
+  [touchUi]="true">
+</ngx-mat-color-picker>
+<ngx-mat-color-picker
+  #primaryColor
+  [touchUi]="true">
+</ngx-mat-color-picker>
+<ngx-mat-color-picker
+  #textOnPrimaryColor
+  [touchUi]="true">
+</ngx-mat-color-picker>
+<ngx-mat-color-picker
+  #secondaryColor
+  [touchUi]="true">
+</ngx-mat-color-picker>
+<ngx-mat-color-picker
+  #textOnSecondaryColor
+  [touchUi]="true">
+</ngx-mat-color-picker>
 <mat-card>
   <mat-card-header>
     <mat-card-title>General</mat-card-title>
   </mat-card-header>
   <mat-card-content *ngIf="form">
     <form [formGroup]="form">
-      <mat-form-field>
-        <mat-label>Background</mat-label>
-        <input
-          matInput
-          [ngxMatColorPicker]="backgroundColor"
-          formControlName="background">
-        <ngx-mat-color-toggle matSuffix [for]="backgroundColor">
-        </ngx-mat-color-toggle>
-      </mat-form-field>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="1 1">
+          <mat-label>Background</mat-label>
+          <input
+            matInput
+            [ngxMatColorPicker]="backgroundColor"
+            formControlName="background">
+          <ngx-mat-color-toggle matSuffix [for]="backgroundColor">
+          </ngx-mat-color-toggle>
+        </mat-form-field>
+        <mat-form-field fxFlex="1 1">
+          <mat-label>Text on Background</mat-label>
+          <input
+            matInput
+            [ngxMatColorPicker]="textOnBackgroundColor"
+            formControlName="textOnBackground">
+          <ngx-mat-color-toggle matSuffix [for]="textOnBackgroundColor">
+          </ngx-mat-color-toggle>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="1 1">
+          <mat-label>Surface</mat-label>
+          <input
+            matInput
+            [ngxMatColorPicker]="surfaceColor"
+            formControlName="surface">
+          <ngx-mat-color-toggle matSuffix [for]="surfaceColor">
+          </ngx-mat-color-toggle>
+        </mat-form-field>
+        <div fxFlex="1 1"></div>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="1 1">
+          <mat-label>Primary</mat-label>
+          <input
+            matInput
+            [ngxMatColorPicker]="primaryColor"
+            formControlName="primary">
+          <ngx-mat-color-toggle matSuffix [for]="primaryColor">
+          </ngx-mat-color-toggle>
+        </mat-form-field>
+        <mat-form-field fxFlex="1 1">
+          <mat-label>Text on Primary</mat-label>
+          <input
+            matInput
+            [ngxMatColorPicker]="textOnPrimaryColor"
+            formControlName="textOnPrimary">
+          <ngx-mat-color-toggle matSuffix [for]="textOnPrimaryColor">
+          </ngx-mat-color-toggle>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field fxFlex="1 1">
+          <mat-label>Secondary</mat-label>
+          <input
+            matInput
+            [ngxMatColorPicker]="secondaryColor"
+            formControlName="secondary">
+          <ngx-mat-color-toggle matSuffix [for]="secondaryColor">
+          </ngx-mat-color-toggle>
+        </mat-form-field>
+        <mat-form-field fxFlex="1 1">
+          <mat-label>Text on Secondary</mat-label>
+          <input
+            matInput
+            [ngxMatColorPicker]="textOnSecondaryColor"
+            formControlName="textOnSecondary">
+          <ngx-mat-color-toggle matSuffix [for]="textOnSecondaryColor">
+          </ngx-mat-color-toggle>
+        </mat-form-field>
+      </div>
     </form>
   </mat-card-content>
   <mat-card-content *ngIf="!form">

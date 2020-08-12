@@ -1,5 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -38,6 +39,7 @@ import { SpacerComponent } from './shared/spacer/spacer.component';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
+    FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
