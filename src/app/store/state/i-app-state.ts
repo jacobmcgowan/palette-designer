@@ -1,13 +1,14 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import { IPalette } from './i-palette';
+import { Palette } from './palette';
 
 export interface IAppState {
   palette: IPalette;
 }
 
 export const INITIAL_STATE: IAppState = {
-  palette: {
+  palette: new Palette({
     changeId: uuidv4(),
     general: {
       background: {
@@ -68,5 +69,5 @@ export const INITIAL_STATE: IAppState = {
       },
     },
     additionalPaint: [],
-  },
+  }),
 };
