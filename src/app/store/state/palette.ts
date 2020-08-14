@@ -7,7 +7,6 @@ import { Paint } from './paint';
 export class Palette implements IPalette {
   constructor(other?: IPalette) {
     if (other) {
-      this.changeId = other.changeId;
       this.general = new General(other.general);
       this.additionalPaint = other.additionalPaint ?
         other.additionalPaint
@@ -18,7 +17,6 @@ export class Palette implements IPalette {
     }
   }
 
-  changeId: string;
   general: IGeneral;
   additionalPaint: IPaint[];
 }

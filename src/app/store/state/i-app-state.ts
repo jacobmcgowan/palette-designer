@@ -9,9 +9,9 @@ export interface IAppState {
 
 export const INITIAL_STATE: IAppState = {
   palette: new Palette({
-    changeId: uuidv4(),
     general: {
       background: {
+        name: 'Background',
         background: {
           r: 250,
           g: 250,
@@ -26,6 +26,7 @@ export const INITIAL_STATE: IAppState = {
         },
       },
       surface: {
+        name: 'Surface',
         background: {
           r: 255,
           g: 255,
@@ -40,6 +41,7 @@ export const INITIAL_STATE: IAppState = {
         },
       },
       primary: {
+        name: 'Primary',
         background: {
           r: 103,
           g: 58,
@@ -54,6 +56,7 @@ export const INITIAL_STATE: IAppState = {
         },
       },
       secondary: {
+        name: 'Secondary',
         background: {
           r: 255,
           g: 215,

@@ -7,3 +7,4 @@ export * from './i-palette';
 export * from './color';
 export * from './general';
 export * from './paint';
+export * from './palette';

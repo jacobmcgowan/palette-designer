@@ -1,5 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { createStore } from 'redux';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 import { MatButtonModule } from '@angular/material/button';
@@ -17,26 +19,29 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { AdditionalPaintComponent } from './palette/design/additional-paint/additional-paint.component';
 import { AppComponent } from './app.component';
-import { ColorComponent } from './palette/design/color/color.component';
+import { ColorConverterService } from './palette/color-converter.service';
 import { DesignComponent } from './palette/design/design.component';
 import { GeneralComponent } from './palette/design/general/general.component';
 import { IAppState, INITIAL_STATE, rootReducer } from './store';
 import { JsonComponent } from './palette/json/json.component';
+import { PaintComponent } from './palette/design/additional-paint/paint/paint.component';
 import { PaletteComponent } from './palette/palette.component';
-import { SpacerComponent } from './shared/spacer/spacer.component';
 import { PreviewComponent } from './palette/design/preview/preview.component';
+import { SpacerComponent } from './shared/spacer/spacer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ColorComponent,
     DesignComponent,
     GeneralComponent,
     JsonComponent,
     PaletteComponent,
     SpacerComponent,
     PreviewComponent,
+    PaintComponent,
+    AdditionalPaintComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -57,14 +62,19 @@ import { PreviewComponent } from './palette/design/preview/preview.component';
     NgxMatColorPickerModule,
     ReactiveFormsModule,
   ],
-  providers: [{
-    provide: MAT_COLOR_FORMATS,
-    useValue: NGX_MAT_COLOR_FORMATS,
-  }],
+  providers: [
+    ColorConverterService,
+    {
+      provide: MAT_COLOR_FORMATS,
+      useValue: NGX_MAT_COLOR_FORMATS,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(redux: NgRedux<IAppState>) {
-    redux.configureStore(rootReducer, INITIAL_STATE);
+    redux.provideStore(
+      createStore(rootReducer, INITIAL_STATE, composeWithDevTools())
+    );
   }
 }

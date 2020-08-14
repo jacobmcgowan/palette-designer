@@ -5,6 +5,7 @@ import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
+import { ColorConverterService } from '../../color-converter.service';
 import { IGeneralForm } from './i-general-form';
 import { IUpdateGeneralAction, IPalette, IAppState, General, ActionType, IColor, Paint, Color } from '../../../store';
 
@@ -14,14 +15,14 @@ import { IUpdateGeneralAction, IPalette, IAppState, General, ActionType, IColor,
   styleUrls: ['./general.component.scss']
 })
 export class GeneralComponent implements OnInit {
-  constructor(private _ngRedux: NgRedux<IAppState>) {
+  constructor(
+    private _ngRedux: NgRedux<IAppState>,
+    private _colorConverterService: ColorConverterService,
+  ) {
   }
 
   @select() palette$: Observable<IPalette>;
-
   form: FormGroup;
-
-  private _changeId: string;
 
   ngOnInit(): void {
     this.palette$
@@ -29,94 +30,119 @@ export class GeneralComponent implements OnInit {
   }
 
   private _updateForm(palette: IPalette): void {
-    if (!this.form) {
-      this._changeId = palette.changeId;
+    const newBackground = palette.general.background.background;
+    const newTextOnBackground = palette.general.background.text;
+    const newSurface = palette.general.surface.background;
+    const newPrimary = palette.general.primary.background;
+    const newTextOnPrimary = palette.general.primary.text;
+    const newSecondary = palette.general.secondary.background;
+    const newTextOnSecondary = palette.general.secondary.text;
 
+    if (!this.form) {
       this.form = new FormGroup({
         background: new FormControl(
-          this._paletteColorToFormColor(palette.general.background.background)
+          this._colorConverterService.paletteToForm(newBackground)
         ),
         textOnBackground: new FormControl(
-          this._paletteColorToFormColor(palette.general.background.text)
+          this._colorConverterService.paletteToForm(newTextOnBackground)
         ),
         surface: new FormControl(
-          this._paletteColorToFormColor(palette.general.surface.background)
+          this._colorConverterService.paletteToForm(newSurface)
         ),
         primary: new FormControl(
-          this._paletteColorToFormColor(palette.general.primary.background)
+          this._colorConverterService.paletteToForm(newPrimary)
         ),
         textOnPrimary: new FormControl(
-          this._paletteColorToFormColor(palette.general.primary.text)
+          this._colorConverterService.paletteToForm(newTextOnPrimary)
         ),
         secondary: new FormControl(
-          this._paletteColorToFormColor(palette.general.secondary.background)
+          this._colorConverterService.paletteToForm(newSecondary)
         ),
         textOnSecondary: new FormControl(
-          this._paletteColorToFormColor(palette.general.secondary.text)
+          this._colorConverterService.paletteToForm(newTextOnSecondary)
         ),
       });
 
       this.form.valueChanges
-        .subscribe(value => this._onChange(value));
-    } else if (this._changeId !== palette.changeId) {
-      this._changeId = palette.changeId;
+        .subscribe(value => this._update(value));
+    } else {
+      const background = this.form.get('background');
+      const textOnBackground = this.form.get('textOnBackground');
+      const surface = this.form.get('surface');
+      const primary = this.form.get('primary');
+      const textOnPrimary = this.form.get('textOnPrimary');
+      const secondary = this.form.get('secondary');
+      const textOnSecondary = this.form.get('textOnSecondary');
 
-      this.form.get('background').setValue(
-        this._paletteColorToFormColor(palette.general.background.background)
-      );
-      this.form.get('textOnBackground').setValue(
-        this._paletteColorToFormColor(palette.general.background.text)
-      );
-      this.form.get('surface').setValue(
-        this._paletteColorToFormColor(palette.general.surface.background)
-      );
-      this.form.get('primary').setValue(
-        this._paletteColorToFormColor(palette.general.primary.background)
-      );
-      this.form.get('textOnPrimary').setValue(
-        this._paletteColorToFormColor(palette.general.primary.text)
-      );
-      this.form.get('secondary').setValue(
-        this._paletteColorToFormColor(palette.general.secondary.background)
-      );
-      this.form.get('textOnSecondary').setValue(
-        this._paletteColorToFormColor(palette.general.secondary.text)
-      );
+      if (!this._colorConverterService.matches(newBackground, background.value)) {
+        background.setValue(
+          this._colorConverterService.paletteToForm(newBackground)
+        );
+      }
+
+      if (!this._colorConverterService.matches(newTextOnBackground, textOnBackground.value)) {
+        background.setValue(
+          this._colorConverterService.paletteToForm(newTextOnBackground)
+        );
+      }
+
+      if (!this._colorConverterService.matches(newSurface, surface.value)) {
+        background.setValue(
+          this._colorConverterService.paletteToForm(newSurface)
+        );
+      }
+
+      if (!this._colorConverterService.matches(newPrimary, primary.value)) {
+        background.setValue(
+          this._colorConverterService.paletteToForm(newPrimary)
+        );
+      }
+
+      if (!this._colorConverterService.matches(newTextOnPrimary, textOnPrimary.value)) {
+        background.setValue(
+          this._colorConverterService.paletteToForm(newTextOnPrimary)
+        );
+      }
+
+      if (!this._colorConverterService.matches(newSecondary, secondary.value)) {
+        background.setValue(
+          this._colorConverterService.paletteToForm(newSecondary)
+        );
+      }
+
+      if (!this._colorConverterService.matches(newTextOnSecondary, textOnSecondary.value)) {
+        background.setValue(
+          this._colorConverterService.paletteToForm(newTextOnSecondary)
+        );
+      }
     }
   }
 
-  private _paletteColorToFormColor(color: IColor): FormColor {
-    return new FormColor(
-      color.r,
-      color.g,
-      color.b,
-      color.a
-    );
-  }
-
-  private _onChange(value: IGeneralForm): void {
-    this._changeId = uuidv4();
+  private _update(value: IGeneralForm): void {
     this._ngRedux.dispatch<IUpdateGeneralAction>({
       type: ActionType.UpdateGeneral,
-      changeId: this._changeId,
-      general: new General({
-        background: new Paint({
-          background: new Color(value.background),
-          text: new Color(value.textOnBackground),
-        }),
-        surface: new Paint({
-          background: new Color(value.surface),
-          text: new Color(value.textOnBackground),
-        }),
-        primary: new Paint({
-          background: new Color(value.primary),
-          text: new Color(value.textOnPrimary),
-        }),
-        secondary: new Paint({
-          background: new Color(value.secondary),
-          text: new Color(value.textOnSecondary),
-        })
-      })
+      general: {
+        background: {
+          name: 'Background',
+          background: value.background,
+          text: value.textOnBackground,
+        },
+        surface: {
+          name: 'Surface',
+          background: value.surface,
+          text: value.textOnBackground,
+        },
+        primary: {
+          name: 'Primary',
+          background: value.primary,
+          text: value.textOnPrimary,
+        },
+        secondary: {
+          name: 'Secondary',
+          background: value.secondary,
+          text: value.textOnSecondary,
+        }
+      }
     });
   }
 }

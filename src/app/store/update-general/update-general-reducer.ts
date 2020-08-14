@@ -1,12 +1,11 @@
-import { IAppState, General } from '../state';
+import { IAppState, General, Palette } from '../state';
 import { IUpdateGeneralAction } from './i-update-general-action';
 
 export function updateGeneral(state: IAppState, action: IUpdateGeneralAction): IAppState {
   return {
-    palette: {
-      changeId: action.changeId,
+    palette: new Palette({
       general: new General(action.general),
-      additionalPaint: [],
-    }
+      additionalPaint: state.palette.additionalPaint,
+    })
   };
 }
