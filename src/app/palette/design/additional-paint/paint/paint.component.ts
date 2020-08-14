@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { IPaint, Paint } from '../../../../store';
+import { IPaint, Paint, IColor } from '../../../../store';
 import { IPaintForm } from './i-paint-form';
 import { ColorConverterService } from 'src/app/palette/color-converter.service';
 
@@ -31,17 +31,17 @@ export class PaintComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.paint && !changes.paint.isFirstChange()) {
-      if (changes.paint.previousValue.name !== changes.paint.currentValue.name) {
+      if (!this._colorsMatch(changes.paint.previousValue.name, changes.paint.currentValue.name)) {
         this.form.get('name')
           .setValue(this._colorConverterService.paletteToForm(changes.paint.currentValue.name));
       }
 
-      if (changes.paint.previousValue.background !== changes.paint.currentValue.background) {
+      if (!this._colorsMatch(changes.paint.previousValue.background, changes.paint.currentValue.background)) {
         this.form.get('background')
           .setValue(this._colorConverterService.paletteToForm(changes.paint.currentValue.background));
       }
 
-      if (changes.paint.previousValue.text !== changes.paint.currentValue.text) {
+      if (!this._colorsMatch(changes.paint.previousValue.text, changes.paint.currentValue.text)) {
         this.form.get('textOnBackground')
           .setValue(this._colorConverterService.paletteToForm(changes.paint.currentValue.text));
       }
@@ -52,8 +52,16 @@ export class PaintComponent implements OnInit, OnChanges {
     this.removed.emit();
   }
 
+  private _colorsMatch(a: IColor, b: IColor): boolean {
+    return a.r === b.r &&
+      a.g === b.g &&
+      a.b === b.b &&
+      a.a === b.a;
+  }
+
   private _update(value: IPaintForm): void {
     this.updated.emit({
+      id: this.paint.id,
       name: value.name,
       background: value.background,
       text: value.textOnBackground,

@@ -11,7 +11,7 @@
 
 <div *ngIf="(palette$ | async) as palette; else loading">
   <app-palette-design-additional-paint-paint
-    *ngFor="let paint of palette.additionalPaint; index as idx"
+    *ngFor="let paint of palette.additionalPaint; index as idx; trackBy: identify"
     [paint]="paint"
     (removed)="remove(idx)"
     (updated)="update(idx, $event)">

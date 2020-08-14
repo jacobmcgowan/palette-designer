@@ -11,6 +11,7 @@ export const INITIAL_STATE: IAppState = {
   palette: new Palette({
     general: {
       background: {
+        id: uuidv4(),
         name: 'Background',
         background: {
           r: 250,
@@ -26,6 +27,7 @@ export const INITIAL_STATE: IAppState = {
         },
       },
       surface: {
+        id: uuidv4(),
         name: 'Surface',
         background: {
           r: 255,
@@ -41,6 +43,7 @@ export const INITIAL_STATE: IAppState = {
         },
       },
       primary: {
+        id: uuidv4(),
         name: 'Primary',
         background: {
           r: 103,
@@ -56,6 +59,7 @@ export const INITIAL_STATE: IAppState = {
         },
       },
       secondary: {
+        id: uuidv4(),
         name: 'Secondary',
         background: {
           r: 255,

@@ -33,6 +33,7 @@ export class AdditionalPaintComponent implements OnInit {
     this._ngRedux.dispatch<IAddAdditionalPaintAction>({
       type: ActionType.AddAdditionalPaint,
       paint: {
+        id: uuidv4(),
         name: '',
         background: {
           r: 0,
@@ -63,6 +64,10 @@ export class AdditionalPaintComponent implements OnInit {
       type: ActionType.RemoveAdditionalPaint,
       index
     });
+  }
+
+  identify(index: number, paint: IPaint): string {
+    return paint.id;
   }
 
 }

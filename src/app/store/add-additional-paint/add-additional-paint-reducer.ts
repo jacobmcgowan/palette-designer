@@ -6,8 +6,8 @@ export function addAdditionalPaint(state: IAppState, action: IAddAdditionalPaint
     palette: new Palette({
       general: state.palette.general,
       additionalPaint: [
-        ...state.palette.additionalPaint,
         new Paint(action.paint),
+        ...state.palette.additionalPaint,
       ],
     })
   };

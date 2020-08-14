@@ -23,6 +23,10 @@ export class GeneralComponent implements OnInit {
 
   @select() palette$: Observable<IPalette>;
   form: FormGroup;
+  private _backgroundId: string;
+  private _surfaceId: string;
+  private _primaryId: string;
+  private _secondaryId: string;
 
   ngOnInit(): void {
     this.palette$
@@ -37,6 +41,11 @@ export class GeneralComponent implements OnInit {
     const newTextOnPrimary = palette.general.primary.text;
     const newSecondary = palette.general.secondary.background;
     const newTextOnSecondary = palette.general.secondary.text;
+
+    this._backgroundId = palette.general.background.id;
+    this._surfaceId = palette.general.surface.id;
+    this._primaryId = palette.general.primary.id;
+    this._secondaryId = palette.general.secondary.id;
 
     if (!this.form) {
       this.form = new FormGroup({
@@ -123,21 +132,25 @@ export class GeneralComponent implements OnInit {
       type: ActionType.UpdateGeneral,
       general: {
         background: {
+          id: this._backgroundId,
           name: 'Background',
           background: value.background,
           text: value.textOnBackground,
         },
         surface: {
+          id: this._surfaceId,
           name: 'Surface',
           background: value.surface,
           text: value.textOnBackground,
         },
         primary: {
+          id: this._primaryId,
           name: 'Primary',
           background: value.primary,
           text: value.textOnPrimary,
         },
         secondary: {
+          id: this._secondaryId,
           name: 'Secondary',
           background: value.secondary,
           text: value.textOnSecondary,
