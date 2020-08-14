@@ -11,7 +11,7 @@ export function updateAdditionalPaint(state: IAppState, action: IUpdateAdditiona
             return paint;
           }
 
-          return new Paint(paint);
+          return new Paint(action.paint);
         }),
     })
   };

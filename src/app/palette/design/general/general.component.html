@@ -39,7 +39,11 @@
   </mat-card-header>
   <mat-card-content *ngIf="form">
     <form [formGroup]="form">
-      <div fxLayout="row">
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutGap="24px"
+        fxLayoutGap.xs="0">
         <mat-form-field fxFlex="1 1">
           <mat-label>Background</mat-label>
           <input
@@ -59,7 +63,11 @@
           </ngx-mat-color-toggle>
         </mat-form-field>
       </div>
-      <div fxLayout="row">
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutGap="24px"
+        fxLayoutGap.xs="0">
         <mat-form-field fxFlex="1 1">
           <mat-label>Surface</mat-label>
           <input
@@ -69,9 +77,13 @@
           <ngx-mat-color-toggle matSuffix [for]="surfaceColor">
           </ngx-mat-color-toggle>
         </mat-form-field>
-        <div fxFlex="1 1"></div>
+        <div fxShow fxHide.xs="true" fxFlex="1 1"></div>
       </div>
-      <div fxLayout="row">
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutGap="24px"
+        fxLayoutGap.xs="0">
         <mat-form-field fxFlex="1 1">
           <mat-label>Primary</mat-label>
           <input
@@ -91,7 +103,11 @@
           </ngx-mat-color-toggle>
         </mat-form-field>
       </div>
-      <div fxLayout="row">
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutGap="24px"
+        fxLayoutGap.xs="0">
         <mat-form-field fxFlex="1 1">
           <mat-label>Secondary</mat-label>
           <input
