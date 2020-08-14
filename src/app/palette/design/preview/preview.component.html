@@ -20,6 +20,13 @@
             </p>
           </mat-card-content>
         </mat-card>
+        <mat-chip-list aria-label="Additional paint preview">
+          <mat-chip
+            *ngFor="let paint of palette.additionalPaint"
+            [ngStyle]="{'background': paint.background.rgba, 'color': paint.text.rgba}">
+          {{ paint.name }}
+          </mat-chip>
+        </mat-chip-list>
       </div>
     </mat-card-content>
   </mat-card>

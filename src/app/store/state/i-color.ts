@@ -3,4 +3,5 @@ export interface IColor {
   g: number;
   b: number;
   a: number;
+  readonly rgba?: string;
 }
