@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '../store';
 import { FileService } from '../shared/file/file.service';
@@ -14,11 +14,17 @@ export class PaletteComponent implements OnInit {
     private _fileService: FileService
   ) { }
 
+  @ViewChild('file') fileInput: ElementRef;
+
   get title(): string {
     return 'Palette Designer';
   }
 
   ngOnInit(): void {
+  }
+
+  open(): void {
+    this.fileInput.nativeElement.click();
   }
 
   save(): void {
