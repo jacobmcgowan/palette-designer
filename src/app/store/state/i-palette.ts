@@ -1,8 +1,8 @@
-import { IGeneral } from './i-general';
+import { ITheme } from './i-theme';
 import { IPaint } from './i-paint';
 
 export interface IPalette {
-  general: IGeneral;
+  theme: ITheme;
   additionalPaint: IPaint[];
   toJson?(): IPalette;
 }

@@ -43,12 +43,17 @@
   [touchUi]="true">
 </ngx-mat-color-picker>
 
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>General</mat-card-title>
-  </mat-card-header>
-  <mat-card-content *ngIf="form">
-    <form [formGroup]="form">
+<mat-card *ngIf="form">
+  <form [formGroup]="form">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-form-field floatLabel="never">
+          <mat-label>Theme</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
       <div
         fxLayout="row"
         fxLayout.xs="column"
@@ -161,9 +166,15 @@
           </ngx-mat-color-toggle>
         </mat-form-field>
       </div>
-    </form>
-  </mat-card-content>
-  <mat-card-content *ngIf="!form">
+    </mat-card-content>
+  </form>
+</mat-card>
+
+<mat-card *ngIf="!form">
+  <mat-card-header>
+    <mat-card-title>Theme</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </mat-card-content>
 </mat-card>

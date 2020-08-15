@@ -9,6 +9,13 @@ mat-card {
   mat-card-header {
     .mat-card-header-text {
       margin: 0;
+      width: 100%;
+    }
+
+    mat-form-field {
+      .mat-form-field-infix {
+        border: none;
+      }
     }
   }
 }

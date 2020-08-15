@@ -1,15 +1,15 @@
 <div *ngIf="(palette$ | async) as palette; else loading">
   <mat-card
     class="preview-container"
-    [ngStyle]="{'background': palette.general.background.background.rgba, 'color': palette.general.background.text.rgba}">
+    [ngStyle]="{'background': palette.theme.background.background.rgba, 'color': palette.theme.background.text.rgba}">
     <mat-card-content>
       <mat-toolbar
-        [ngStyle]="{'background': palette.general.primary.background.rgba, 'color': palette.general.primary.text.rgba}">
+        [ngStyle]="{'background': palette.theme.primary.background.rgba, 'color': palette.theme.primary.text.rgba}">
         <span>Preview</span>
       </mat-toolbar>
       <div class="preview-content">
         <mat-card
-          [ngStyle]="{'background': palette.general.surface.background.rgba, 'color': palette.general.surface.text.rgba}">
+          [ngStyle]="{'background': palette.theme.surface.background.rgba, 'color': palette.theme.surface.text.rgba}">
           <mat-card-header>
             <mat-card-title>Surface</mat-card-title>
           </mat-card-header>
@@ -22,12 +22,12 @@
           <mat-card-actions fxLayoutAlign="end">
             <button
               mat-raised-button
-              [ngStyle]="{'background': palette.general.warn.background.rgba, 'color': palette.general.warn.text.rgba}">
+              [ngStyle]="{'background': palette.theme.warn.background.rgba, 'color': palette.theme.warn.text.rgba}">
               Cancel
             </button>
             <button
               mat-raised-button
-              [ngStyle]="{'background': palette.general.secondary.background.rgba, 'color': palette.general.secondary.text.rgba}">
+              [ngStyle]="{'background': palette.theme.secondary.background.rgba, 'color': palette.theme.secondary.text.rgba}">
               OK
             </button>
           </mat-card-actions>

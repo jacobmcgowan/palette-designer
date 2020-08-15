@@ -25,25 +25,25 @@ import { AppComponent } from './app.component';
 import { ColorConverterService } from './palette/design/color-converter/color-converter.service';
 import { DesignComponent } from './palette/design/design.component';
 import { FileService } from './shared/file/file.service';
-import { GeneralComponent } from './palette/design/general/general.component';
 import { IAppState, INITIAL_STATE, rootReducer } from './store';
 import { JsonComponent } from './palette/json/json.component';
 import { PaintComponent } from './palette/design/additional-paint/paint/paint.component';
 import { PaletteComponent } from './palette/palette.component';
 import { PreviewComponent } from './palette/design/preview/preview.component';
 import { SpacerComponent } from './shared/spacer/spacer.component';
+import { ThemeComponent } from './palette/design/theme/theme.component';
 
 @NgModule({
   declarations: [
+    AdditionalPaintComponent,
     AppComponent,
     DesignComponent,
-    GeneralComponent,
     JsonComponent,
-    PaletteComponent,
-    SpacerComponent,
-    PreviewComponent,
     PaintComponent,
-    AdditionalPaintComponent,
+    PaletteComponent,
+    PreviewComponent,
+    SpacerComponent,
+    ThemeComponent,
   ],
   imports: [
     BrowserAnimationsModule,

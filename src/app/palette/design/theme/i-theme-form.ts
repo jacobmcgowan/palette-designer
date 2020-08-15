@@ -1,6 +1,7 @@
 import { Color } from '@angular-material-components/color-picker';
 
-export interface IGeneralForm {
+export interface IThemeForm {
+  name: string;
   background: Color;
   textOnBackground: Color;
   surface: Color;

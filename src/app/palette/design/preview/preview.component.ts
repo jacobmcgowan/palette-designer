@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgRedux, select } from '@angular-redux/store';
+import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
-import { IUpdateGeneralAction, IPalette, IAppState, General, ActionType } from '../../../store';
+import { IPalette } from '../../../store';
 
 @Component({
   selector: 'app-palette-design-preview',
@@ -10,7 +10,7 @@ import { IUpdateGeneralAction, IPalette, IAppState, General, ActionType } from '
   styleUrls: ['./preview.component.scss']
 })
 export class PreviewComponent implements OnInit {
-  constructor(private _ngRedux: NgRedux<IAppState>) { }
+  constructor() { }
 
   @select() palette$: Observable<IPalette>;
 

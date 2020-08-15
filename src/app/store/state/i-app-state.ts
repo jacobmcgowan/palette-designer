@@ -9,7 +9,8 @@ export interface IAppState {
 
 export const INITIAL_STATE: IAppState = {
   palette: new Palette({
-    general: {
+    theme: {
+      name: 'My Theme',
       background: {
         id: uuidv4(),
         name: 'Background',

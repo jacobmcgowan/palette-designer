@@ -35,7 +35,7 @@ export class PaletteComponent implements OnInit {
         const json = JSON.stringify(palette.toJson
           ? palette.toJson()
           : palette);
-        this._fileService.download(json, 'palette-design.json', 'application/json');
+        this._fileService.download(json, `${palette.theme.name}.json`, 'application/json');
       });
   }
 

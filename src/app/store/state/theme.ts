@@ -1,10 +1,11 @@
-import { IGeneral } from './i-general';
+import { ITheme } from './i-theme';
 import { IPaint } from './i-paint';
 import { Paint } from './paint';
 
-export class General implements IGeneral {
-  constructor(other?: IGeneral) {
+export class Theme implements ITheme {
+  constructor(other?: ITheme) {
     if (other) {
+      this.name = other.name;
       this.background = new Paint(other.background);
       this.surface = new Paint(other.surface);
       this.primary = new Paint(other.primary);
@@ -13,14 +14,16 @@ export class General implements IGeneral {
     }
   }
 
+  name: string;
   background: IPaint;
   surface: IPaint;
   primary: IPaint;
   secondary: IPaint;
   warn: IPaint;
 
-  toJson(): IGeneral {
+  toJson(): ITheme {
     return {
+      name: this.name,
       background: this.background.toJson ?
         this.background.toJson() :
         this.background,
