@@ -1,4 +1,4 @@
-export * from './i-app-state';
+export * from './app-state';
 export * from './i-color';
 export * from './i-theme';
 export * from './i-paint';

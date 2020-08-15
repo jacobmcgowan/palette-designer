@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { ColorConverterService } from '../color-converter/color-converter.service';
 import { IThemeForm } from './i-theme-form';
-import { IUpdateThemeAction, IPalette, IAppState, ActionType, IColor } from '../../../store';
+import { IUpdateThemeAction, IPalette, AppState, ActionType, IColor } from '../../../store';
 
 @Component({
   selector: 'app-palette-design-theme',
@@ -14,7 +14,7 @@ import { IUpdateThemeAction, IPalette, IAppState, ActionType, IColor } from '../
 })
 export class ThemeComponent implements OnInit {
   constructor(
-    private _ngRedux: NgRedux<IAppState>,
+    private _ngRedux: NgRedux<AppState>,
     private _colorConverterService: ColorConverterService,
   ) {
   }

@@ -1,12 +1,12 @@
 import { ActionType, IAction } from './action';
-import { IAppState } from './state';
+import { AppState } from './state';
 import { updateTheme, IUpdateThemeAction } from './update-theme';
 import { addAdditionalPaint, IAddAdditionalPaintAction } from './add-additional-paint';
 import { updateAdditionalPaint, IUpdateAdditionalPaintAction } from './update-additional-paint';
 import { removeAdditionalPaint, IRemoveAdditionalPaintAction } from './remove-additional-paint';
 import { updatePalette, IUpdatePaletteAction } from './update-palette';
 
-export function rootReducer(state: IAppState, action: IAction): IAppState {
+export function rootReducer(state: AppState, action: IAction): AppState {
   switch (action.type) {
     case ActionType.UpdateTheme:
       state = updateTheme(state, action as IUpdateThemeAction);

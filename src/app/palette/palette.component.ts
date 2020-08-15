@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import { IAppState } from '../store';
+import { AppState } from '../store';
 import { FileService } from '../shared/file/file.service';
 import { IUpdatePaletteAction, ActionType } from '../store';
 
@@ -11,7 +11,7 @@ import { IUpdatePaletteAction, ActionType } from '../store';
 })
 export class PaletteComponent implements OnInit {
   constructor(
-    private _ngRedux: NgRedux<IAppState>,
+    private _ngRedux: NgRedux<AppState>,
     private _fileService: FileService
   ) { }
 

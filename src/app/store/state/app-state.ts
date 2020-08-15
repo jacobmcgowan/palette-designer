@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { IPalette } from './i-palette';
 import { Palette } from './palette';
 
-export interface IAppState {
+export interface AppState {
   palette: IPalette;
 }
 
-export const INITIAL_STATE: IAppState = {
+export const INITIAL_STATE: AppState = {
   palette: new Palette({
     theme: {
       name: 'My Theme',

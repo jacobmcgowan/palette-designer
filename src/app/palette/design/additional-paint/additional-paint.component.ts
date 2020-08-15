@@ -10,7 +10,7 @@ import {
   IUpdateAdditionalPaintAction,
   IRemoveAdditionalPaintAction,
   IPalette,
-  IAppState,
+  AppState,
   ActionType,
   Paint
 } from '../../../store';
@@ -22,7 +22,7 @@ import {
 })
 export class AdditionalPaintComponent implements OnInit {
 
-  constructor(private _ngRedux: NgRedux<IAppState>) { }
+  constructor(private _ngRedux: NgRedux<AppState>) { }
 
   @select() palette$: Observable<IPalette>;
 

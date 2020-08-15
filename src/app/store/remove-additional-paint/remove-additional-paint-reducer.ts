@@ -1,7 +1,7 @@
-import { IAppState, Palette } from '../state';
+import { AppState, Palette } from '../state';
 import { IRemoveAdditionalPaintAction } from './i-remove-additional-paint-action';
 
-export function removeAdditionalPaint(state: IAppState, action: IRemoveAdditionalPaintAction): IAppState {
+export function removeAdditionalPaint(state: AppState, action: IRemoveAdditionalPaintAction): AppState {
   return {
     palette: new Palette({
       theme: state.palette.theme,

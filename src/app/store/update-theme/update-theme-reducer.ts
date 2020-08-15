@@ -1,7 +1,7 @@
-import { IAppState, Theme, Palette } from '../state';
+import { AppState, Theme, Palette } from '../state';
 import { IUpdateThemeAction } from './i-update-theme-action';
 
-export function updateTheme(state: IAppState, action: IUpdateThemeAction): IAppState {
+export function updateTheme(state: AppState, action: IUpdateThemeAction): AppState {
   return {
     palette: new Palette({
       theme: new Theme(action.theme),

@@ -25,7 +25,7 @@ import { AppComponent } from './app.component';
 import { ColorConverterService } from './palette/design/color-converter/color-converter.service';
 import { DesignComponent } from './palette/design/design.component';
 import { FileService } from './shared/file/file.service';
-import { IAppState, INITIAL_STATE, rootReducer } from './store';
+import { AppState, INITIAL_STATE, rootReducer } from './store';
 import { JsonComponent } from './palette/json/json.component';
 import { PaintComponent } from './palette/design/additional-paint/paint/paint.component';
 import { PaletteComponent } from './palette/palette.component';
@@ -76,7 +76,7 @@ import { ThemeComponent } from './palette/design/theme/theme.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(redux: NgRedux<IAppState>) {
+  constructor(redux: NgRedux<AppState>) {
     redux.provideStore(
       createStore(rootReducer, INITIAL_STATE, composeWithDevTools())
     );
