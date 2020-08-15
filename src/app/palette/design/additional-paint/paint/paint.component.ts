@@ -33,17 +33,24 @@ export class PaintComponent implements OnInit, OnChanges {
     if (changes.paint && !changes.paint.isFirstChange()) {
       if (!this._colorsMatch(changes.paint.previousValue.name, changes.paint.currentValue.name)) {
         this.form.get('name')
-          .setValue(this._colorConverterService.paletteToForm(changes.paint.currentValue.name));
+          .setValue(
+            this._colorConverterService.paletteToForm(changes.paint.currentValue.name),
+            { emitEvent: false }
+          );
       }
 
       if (!this._colorsMatch(changes.paint.previousValue.background, changes.paint.currentValue.background)) {
         this.form.get('background')
-          .setValue(this._colorConverterService.paletteToForm(changes.paint.currentValue.background));
+          .setValue(this._colorConverterService.paletteToForm(changes.paint.currentValue.background),
+          { emitEvent: false }
+        );
       }
 
       if (!this._colorsMatch(changes.paint.previousValue.text, changes.paint.currentValue.text)) {
         this.form.get('textOnBackground')
-          .setValue(this._colorConverterService.paletteToForm(changes.paint.currentValue.text));
+          .setValue(this._colorConverterService.paletteToForm(changes.paint.currentValue.text),
+          { emitEvent: false }
+        );
       }
     }
   }

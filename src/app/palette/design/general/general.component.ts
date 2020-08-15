@@ -100,50 +100,58 @@ export class GeneralComponent implements OnInit {
       }
 
       if (!this._colorConverterService.matches(newTextOnBackground, textOnBackground.value)) {
-        background.setValue(
-          this._colorConverterService.paletteToForm(newTextOnBackground)
+        textOnBackground.setValue(
+          this._colorConverterService.paletteToForm(newTextOnBackground),
+          { emitEvent: false }
         );
       }
 
       if (!this._colorConverterService.matches(newSurface, surface.value)) {
-        background.setValue(
-          this._colorConverterService.paletteToForm(newSurface)
+        surface.setValue(
+          this._colorConverterService.paletteToForm(newSurface),
+          { emitEvent: false }
         );
       }
 
       if (!this._colorConverterService.matches(newPrimary, primary.value)) {
-        background.setValue(
-          this._colorConverterService.paletteToForm(newPrimary)
+        primary.setValue(
+          this._colorConverterService.paletteToForm(newPrimary),
+          { emitEvent: false }
         );
       }
 
       if (!this._colorConverterService.matches(newTextOnPrimary, textOnPrimary.value)) {
-        background.setValue(
-          this._colorConverterService.paletteToForm(newTextOnPrimary)
+        textOnPrimary.setValue(
+          this._colorConverterService.paletteToForm(newTextOnPrimary),
+          { emitEvent: false }
         );
       }
 
       if (!this._colorConverterService.matches(newSecondary, secondary.value)) {
-        background.setValue(
-          this._colorConverterService.paletteToForm(newSecondary)
+        secondary.setValue(
+          this._colorConverterService.paletteToForm(newSecondary),
+          { emitEvent: false }
         );
       }
 
       if (!this._colorConverterService.matches(newTextOnSecondary, textOnSecondary.value)) {
-        background.setValue(
-          this._colorConverterService.paletteToForm(newTextOnSecondary)
+        textOnSecondary.setValue(
+          this._colorConverterService.paletteToForm(newTextOnSecondary),
+          { emitEvent: false }
         );
       }
 
       if (!this._colorConverterService.matches(newWarn, warn.value)) {
-        background.setValue(
-          this._colorConverterService.paletteToForm(newWarn)
+        warn.setValue(
+          this._colorConverterService.paletteToForm(newWarn),
+          { emitEvent: false }
         );
       }
 
       if (!this._colorConverterService.matches(newTextOnWarn, textOnWarn.value)) {
-        background.setValue(
-          this._colorConverterService.paletteToForm(newTextOnWarn)
+        textOnWarn.setValue(
+          this._colorConverterService.paletteToForm(newTextOnWarn),
+          { emitEvent: false }
         );
       }
     }
