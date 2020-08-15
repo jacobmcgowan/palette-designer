@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
 import { ColorConverterService } from '../color-converter/color-converter.service';
 import { IThemeForm } from './i-theme-form';
 import { IUpdateThemeAction, IPalette, AppState, ActionType, IColor } from '../../../store';
+import { invalidColorValidator } from '../invalid-color-validator';
 
 @Component({
   selector: 'app-palette-design-theme',
@@ -26,6 +27,46 @@ export class ThemeComponent implements OnInit {
   private _primaryId: string;
   private _secondaryId: string;
   private _warnId: string;
+
+  get name(): AbstractControl {
+    return this.form.get('name');
+  }
+
+  get background(): AbstractControl {
+    return this.form.get('background');
+  }
+
+  get textOnBackground(): AbstractControl {
+    return this.form.get('textOnBackground');
+  }
+
+  get surface(): AbstractControl {
+    return this.form.get('surface');
+  }
+
+  get primary(): AbstractControl {
+    return this.form.get('primary');
+  }
+
+  get textOnPrimary(): AbstractControl {
+    return this.form.get('textOnPrimary');
+  }
+
+  get secondary(): AbstractControl {
+    return this.form.get('secondary');
+  }
+
+  get textOnSecondary(): AbstractControl {
+    return this.form.get('textOnSecondary');
+  }
+
+  get warn(): AbstractControl {
+    return this.form.get('warn');
+  }
+
+  get textOnWarn(): AbstractControl {
+    return this.form.get('textOnWarn');
+  }
 
   ngOnInit(): void {
     this.palette$
@@ -52,54 +93,85 @@ export class ThemeComponent implements OnInit {
 
     if (!this.form) {
       this.form = new FormGroup({
-        name: new FormControl(newName),
+        name: new FormControl(newName, [
+          Validators.required
+        ]),
         background: new FormControl(
-          this._colorConverterService.paletteToForm(newBackground)
+          this._colorConverterService.paletteToForm(newBackground),
+          [
+            invalidColorValidator
+          ]
         ),
         textOnBackground: new FormControl(
-          this._colorConverterService.paletteToForm(newTextOnBackground)
+          this._colorConverterService.paletteToForm(newTextOnBackground),
+          [
+            invalidColorValidator
+          ]
         ),
         surface: new FormControl(
-          this._colorConverterService.paletteToForm(newSurface)
+          this._colorConverterService.paletteToForm(newSurface),
+          [
+            invalidColorValidator
+          ]
         ),
         primary: new FormControl(
-          this._colorConverterService.paletteToForm(newPrimary)
+          this._colorConverterService.paletteToForm(newPrimary),
+          [
+            invalidColorValidator
+          ]
         ),
         textOnPrimary: new FormControl(
-          this._colorConverterService.paletteToForm(newTextOnPrimary)
+          this._colorConverterService.paletteToForm(newTextOnPrimary),
+          [
+            invalidColorValidator
+          ]
         ),
         secondary: new FormControl(
-          this._colorConverterService.paletteToForm(newSecondary)
+          this._colorConverterService.paletteToForm(newSecondary),
+          [
+            invalidColorValidator
+          ]
         ),
         textOnSecondary: new FormControl(
-          this._colorConverterService.paletteToForm(newTextOnSecondary)
+          this._colorConverterService.paletteToForm(newTextOnSecondary),
+          [
+            invalidColorValidator
+          ]
         ),
         warn: new FormControl(
-          this._colorConverterService.paletteToForm(newWarn)
+          this._colorConverterService.paletteToForm(newWarn),
+          [
+            invalidColorValidator
+          ]
         ),
         textOnWarn: new FormControl(
-          this._colorConverterService.paletteToForm(newTextOnWarn)
+          this._colorConverterService.paletteToForm(newTextOnWarn),
+          [
+            invalidColorValidator
+          ]
         ),
       });
 
       this.form.valueChanges
-        .subscribe(value => this._update(value));
+        .subscribe(value => {
+          if (this.form.valid) {
+            this._update(value);
+          }
+        });
     } else {
-      const name = this.form.get('name');
-
-      if (newName !== name.value) {
-        name.setValue(newName, { emitEvent: false });
+      if (newName !== this.name.value) {
+        this.name.setValue(newName, { emitEvent: false });
       }
 
-      this._colorConverterService.setForm(this.form.get('background'), newBackground);
-      this._colorConverterService.setForm(this.form.get('textOnBackground'), newTextOnBackground);
-      this._colorConverterService.setForm(this.form.get('surface'), newSurface);
-      this._colorConverterService.setForm(this.form.get('primary'), newPrimary);
-      this._colorConverterService.setForm(this.form.get('textOnPrimary'), newTextOnPrimary);
-      this._colorConverterService.setForm(this.form.get('secondary'), newSecondary);
-      this._colorConverterService.setForm(this.form.get('textOnSecondary'), newTextOnSecondary);
-      this._colorConverterService.setForm(this.form.get('warn'), newWarn);
-      this._colorConverterService.setForm(this.form.get('textOnWarn'), newTextOnWarn);
+      this._colorConverterService.setForm(this.background, newBackground);
+      this._colorConverterService.setForm(this.textOnBackground, newTextOnBackground);
+      this._colorConverterService.setForm(this.surface, newSurface);
+      this._colorConverterService.setForm(this.primary, newPrimary);
+      this._colorConverterService.setForm(this.textOnPrimary, newTextOnPrimary);
+      this._colorConverterService.setForm(this.secondary, newSecondary);
+      this._colorConverterService.setForm(this.textOnSecondary, newTextOnSecondary);
+      this._colorConverterService.setForm(this.warn, newWarn);
+      this._colorConverterService.setForm(this.textOnWarn, newTextOnWarn);
     }
   }
 

@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from '../store';
@@ -12,7 +13,8 @@ import { IUpdatePaletteAction, ActionType } from '../store';
 export class PaletteComponent implements OnInit {
   constructor(
     private _ngRedux: NgRedux<AppState>,
-    private _fileService: FileService
+    private _fileService: FileService,
+    private _snackBar: MatSnackBar
   ) { }
 
   @ViewChild('file') fileInput: ElementRef;
@@ -36,6 +38,10 @@ export class PaletteComponent implements OnInit {
           ? palette.toJson()
           : palette);
         this._fileService.download(json, `${palette.theme.name}.json`, 'application/json');
+      }, error => {
+        this._snackBar.open('Failed to save file', 'Dismiss', {
+          panelClass: ['error']
+        });
       });
   }
 
@@ -50,10 +56,14 @@ export class PaletteComponent implements OnInit {
   }
 
   private _updatePalette(contents: any): void {
-    const json = JSON.parse(contents);
-    this._ngRedux.dispatch<IUpdatePaletteAction>({
-      type: ActionType.UpdatePalette,
-      palette: json,
-    });
+    try {
+      const json = JSON.parse(contents);
+      this._ngRedux.dispatch<IUpdatePaletteAction>({
+        type: ActionType.UpdatePalette,
+        palette: json,
+      });
+    } catch (error) {
+      this._snackBar.open('Failed to read file', 'Dismiss');
+    }
   }
 }

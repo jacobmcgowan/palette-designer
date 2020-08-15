@@ -50,6 +50,9 @@
         <mat-form-field floatLabel="never">
           <mat-label>Theme</mat-label>
           <input matInput formControlName="name">
+          <mat-error *ngIf="name.errors && name.errors.required">
+            Name is required
+          </mat-error>
         </mat-form-field>
       </mat-card-title>
     </mat-card-header>
@@ -67,6 +70,9 @@
             formControlName="background">
           <ngx-mat-color-toggle matSuffix [for]="backgroundColor">
           </ngx-mat-color-toggle>
+          <mat-error *ngIf="background.errors && background.errors.invalidColor">
+            Background is an invalid color
+          </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="1 1">
           <mat-label>Text on Background</mat-label>
@@ -76,6 +82,9 @@
             formControlName="textOnBackground">
           <ngx-mat-color-toggle matSuffix [for]="textOnBackgroundColor">
           </ngx-mat-color-toggle>
+          <mat-error *ngIf="textOnBackground.errors && textOnBackground.errors.invalidColor">
+            Text on background is an invalid color
+          </mat-error>
         </mat-form-field>
       </div>
       <div
@@ -91,6 +100,9 @@
             formControlName="surface">
           <ngx-mat-color-toggle matSuffix [for]="surfaceColor">
           </ngx-mat-color-toggle>
+          <mat-error *ngIf="surface.errors && surface.errors.invalidColor">
+            Surface is an invalid color
+          </mat-error>
         </mat-form-field>
         <div fxShow fxHide.xs="true" fxFlex="1 1"></div>
       </div>
@@ -107,6 +119,9 @@
             formControlName="primary">
           <ngx-mat-color-toggle matSuffix [for]="primaryColor">
           </ngx-mat-color-toggle>
+          <mat-error *ngIf="primary.errors && primary.errors.invalidColor">
+            Primary is an invalid color
+          </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="1 1">
           <mat-label>Text on Primary</mat-label>
@@ -116,6 +131,9 @@
             formControlName="textOnPrimary">
           <ngx-mat-color-toggle matSuffix [for]="textOnPrimaryColor">
           </ngx-mat-color-toggle>
+          <mat-error *ngIf="textOnPrimary.errors && textOnPrimary.errors.invalidColor">
+            Text on primary is an invalid color
+          </mat-error>
         </mat-form-field>
       </div>
       <div
@@ -131,6 +149,9 @@
             formControlName="secondary">
           <ngx-mat-color-toggle matSuffix [for]="secondaryColor">
           </ngx-mat-color-toggle>
+          <mat-error *ngIf="secondary.errors && secondary.errors.invalidColor">
+            Secondary is an invalid color
+          </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="1 1">
           <mat-label>Text on Secondary</mat-label>
@@ -140,6 +161,9 @@
             formControlName="textOnSecondary">
           <ngx-mat-color-toggle matSuffix [for]="textOnSecondaryColor">
           </ngx-mat-color-toggle>
+          <mat-error *ngIf="textOnSecondary.errors && textOnSecondary.errors.invalidColor">
+            Text on secondary is an invalid color
+          </mat-error>
         </mat-form-field>
       </div>
       <div
@@ -155,6 +179,9 @@
             formControlName="warn">
           <ngx-mat-color-toggle matSuffix [for]="warnColor">
           </ngx-mat-color-toggle>
+          <mat-error *ngIf="warn.errors && warn.errors.invalidColor">
+            Warn is an invalid color
+          </mat-error>
         </mat-form-field>
         <mat-form-field fxFlex="1 1">
           <mat-label>Text on Warn</mat-label>
@@ -164,6 +191,9 @@
             formControlName="textOnWarn">
           <ngx-mat-color-toggle matSuffix [for]="textOnWarnColor">
           </ngx-mat-color-toggle>
+          <mat-error *ngIf="textOnWarnColor.errors && textOnWarnColor.errors.invalidColor">
+            Text on warn is an invalid color
+          </mat-error>
         </mat-form-field>
       </div>
     </mat-card-content>
