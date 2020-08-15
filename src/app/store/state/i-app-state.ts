@@ -74,6 +74,22 @@ export const INITIAL_STATE: IAppState = {
           a: 1.0,
         },
       },
+      warn: {
+        id: uuidv4(),
+        name: 'Warn',
+        background: {
+          r: 244,
+          g: 67,
+          b: 54,
+          a: 1.0,
+        },
+        text: {
+          r: 255,
+          g: 255,
+          b: 255,
+          a: 1.0,
+        },
+      },
     },
     additionalPaint: [],
   }),

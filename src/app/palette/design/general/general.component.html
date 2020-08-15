@@ -33,6 +33,16 @@
   [touchUi]="true">
 </ngx-mat-color-picker>
 
+<ngx-mat-color-picker
+  #warnColor
+  [touchUi]="true">
+</ngx-mat-color-picker>
+
+<ngx-mat-color-picker
+  #textOnWarnColor
+  [touchUi]="true">
+</ngx-mat-color-picker>
+
 <mat-card>
   <mat-card-header>
     <mat-card-title>General</mat-card-title>
@@ -124,6 +134,30 @@
             [ngxMatColorPicker]="textOnSecondaryColor"
             formControlName="textOnSecondary">
           <ngx-mat-color-toggle matSuffix [for]="textOnSecondaryColor">
+          </ngx-mat-color-toggle>
+        </mat-form-field>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutGap="24px"
+        fxLayoutGap.xs="0">
+        <mat-form-field fxFlex="1 1">
+          <mat-label>Warn</mat-label>
+          <input
+            matInput
+            [ngxMatColorPicker]="warnColor"
+            formControlName="warn">
+          <ngx-mat-color-toggle matSuffix [for]="warnColor">
+          </ngx-mat-color-toggle>
+        </mat-form-field>
+        <mat-form-field fxFlex="1 1">
+          <mat-label>Text on Warn</mat-label>
+          <input
+            matInput
+            [ngxMatColorPicker]="textOnWarnColor"
+            formControlName="textOnWarn">
+          <ngx-mat-color-toggle matSuffix [for]="textOnWarnColor">
           </ngx-mat-color-toggle>
         </mat-form-field>
       </div>

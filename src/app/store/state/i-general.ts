@@ -5,4 +5,5 @@ export interface IGeneral {
   surface: IPaint;
   primary: IPaint;
   secondary: IPaint;
+  warn: IPaint;
 }

@@ -8,4 +8,6 @@ export interface IGeneralForm {
   textOnPrimary: Color;
   secondary: Color;
   textOnSecondary: Color;
+  warn: Color;
+  textOnWarn: Color;
 }

@@ -9,6 +9,7 @@ export class General implements IGeneral {
       this.surface = new Paint(other.surface);
       this.primary = new Paint(other.primary);
       this.secondary = new Paint(other.secondary);
+      this.warn = new Paint(other.warn);
     }
   }
 
@@ -16,4 +17,5 @@ export class General implements IGeneral {
   surface: IPaint;
   primary: IPaint;
   secondary: IPaint;
+  warn: IPaint;
 }

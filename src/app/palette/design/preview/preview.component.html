@@ -19,6 +19,18 @@
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </mat-card-content>
+          <mat-card-actions fxLayoutAlign="end">
+            <button
+              mat-raised-button
+              [ngStyle]="{'background': palette.general.warn.background.rgba, 'color': palette.general.warn.text.rgba}">
+              Cancel
+            </button>
+            <button
+              mat-raised-button
+              [ngStyle]="{'background': palette.general.secondary.background.rgba, 'color': palette.general.secondary.text.rgba}">
+              OK
+            </button>
+          </mat-card-actions>
         </mat-card>
         <mat-chip-list aria-label="Additional paint preview">
           <mat-chip

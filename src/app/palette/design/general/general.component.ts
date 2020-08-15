@@ -27,6 +27,7 @@ export class GeneralComponent implements OnInit {
   private _surfaceId: string;
   private _primaryId: string;
   private _secondaryId: string;
+  private _warnId: string;
 
   ngOnInit(): void {
     this.palette$
@@ -41,11 +42,14 @@ export class GeneralComponent implements OnInit {
     const newTextOnPrimary = palette.general.primary.text;
     const newSecondary = palette.general.secondary.background;
     const newTextOnSecondary = palette.general.secondary.text;
+    const newWarn = palette.general.warn.background;
+    const newTextOnWarn = palette.general.warn.text;
 
     this._backgroundId = palette.general.background.id;
     this._surfaceId = palette.general.surface.id;
     this._primaryId = palette.general.primary.id;
     this._secondaryId = palette.general.secondary.id;
+    this._warnId = palette.general.warn.id;
 
     if (!this.form) {
       this.form = new FormGroup({
@@ -70,6 +74,12 @@ export class GeneralComponent implements OnInit {
         textOnSecondary: new FormControl(
           this._colorConverterService.paletteToForm(newTextOnSecondary)
         ),
+        warn: new FormControl(
+          this._colorConverterService.paletteToForm(newWarn)
+        ),
+        textOnWarn: new FormControl(
+          this._colorConverterService.paletteToForm(newTextOnWarn)
+        ),
       });
 
       this.form.valueChanges
@@ -82,6 +92,8 @@ export class GeneralComponent implements OnInit {
       const textOnPrimary = this.form.get('textOnPrimary');
       const secondary = this.form.get('secondary');
       const textOnSecondary = this.form.get('textOnSecondary');
+      const warn = this.form.get('warn');
+      const textOnWarn = this.form.get('textOnWarn');
 
       if (!this._colorConverterService.matches(newBackground, background.value)) {
         background.setValue(
@@ -124,6 +136,18 @@ export class GeneralComponent implements OnInit {
           this._colorConverterService.paletteToForm(newTextOnSecondary)
         );
       }
+
+      if (!this._colorConverterService.matches(newWarn, warn.value)) {
+        background.setValue(
+          this._colorConverterService.paletteToForm(newWarn)
+        );
+      }
+
+      if (!this._colorConverterService.matches(newTextOnWarn, textOnWarn.value)) {
+        background.setValue(
+          this._colorConverterService.paletteToForm(newTextOnWarn)
+        );
+      }
     }
   }
 
@@ -154,8 +178,14 @@ export class GeneralComponent implements OnInit {
           name: 'Secondary',
           background: value.secondary,
           text: value.textOnSecondary,
-        }
-      }
+        },
+        warn: {
+          id: this._warnId,
+          name: 'Warn',
+          background: value.warn,
+          text: value.textOnWarn,
+        },
+      },
     });
   }
 }
