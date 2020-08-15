@@ -18,4 +18,24 @@ export class General implements IGeneral {
   primary: IPaint;
   secondary: IPaint;
   warn: IPaint;
+
+  toJson(): IGeneral {
+    return {
+      background: this.background.toJson ?
+        this.background.toJson() :
+        this.background,
+      surface: this.surface.toJson ?
+        this.surface.toJson() :
+        this.surface,
+      primary: this.primary.toJson ?
+        this.primary.toJson() :
+        this.primary,
+      secondary: this.secondary.toJson ?
+        this.secondary.toJson() :
+        this.secondary,
+      warn: this.warn.toJson ?
+        this.warn.toJson() :
+        this.warn,
+    };
+  }
 }

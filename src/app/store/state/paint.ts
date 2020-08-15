@@ -16,4 +16,17 @@ export class Paint implements IPaint {
   name: string;
   background: IColor;
   text: IColor;
+
+  toJson(): IPaint {
+    return {
+      id: this.id,
+      name: this.name,
+      background: this.background.toJson ?
+        this.background.toJson() :
+        this.background,
+      text: this.text.toJson ?
+        this.text.toJson() :
+        this.text,
+    };
+  }
 }

@@ -1,6 +1,6 @@
 <mat-card *ngIf="(palette$ | async) as palette; else loading">
   <mat-card-content>
-    <ngx-json-viewer [json]="palette"></ngx-json-viewer>
+    <ngx-json-viewer [json]="palette.toJson()"></ngx-json-viewer>
   </mat-card-content>
 </mat-card>
 

@@ -5,4 +5,5 @@ export interface IPaint {
   name: string;
   background: IColor;
   text: IColor;
+  toJson?(): IPaint;
 }

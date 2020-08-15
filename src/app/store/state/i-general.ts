@@ -6,4 +6,5 @@ export interface IGeneral {
   primary: IPaint;
   secondary: IPaint;
   warn: IPaint;
+  toJson?(): IGeneral;
 }

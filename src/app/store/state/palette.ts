@@ -19,4 +19,16 @@ export class Palette implements IPalette {
 
   general: IGeneral;
   additionalPaint: IPaint[];
+
+  toJson(): IPalette {
+    return {
+      general: this.general.toJson ?
+        this.general.toJson() :
+        this.general,
+      additionalPaint: this.additionalPaint ?
+        this.additionalPaint
+          .map(paint => paint.toJson ? paint.toJson() : paint) :
+        this.additionalPaint,
+    };
+  }
 }
