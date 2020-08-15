@@ -1,13 +1,11 @@
-import { Color as FormColor } from '@angular-material-components/color-picker';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
-import { v4 as uuidv4 } from 'uuid';
 
-import { ColorConverterService } from '../../color-converter.service';
+import { ColorConverterService } from '../color-converter/color-converter.service';
 import { IGeneralForm } from './i-general-form';
-import { IUpdateGeneralAction, IPalette, IAppState, General, ActionType, IColor, Paint, Color } from '../../../store';
+import { IUpdateGeneralAction, IPalette, IAppState, ActionType } from '../../../store';
 
 @Component({
   selector: 'app-palette-design-general',

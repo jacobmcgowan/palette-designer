@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { select } from '@angular-redux/store';
+import { select, NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
-import { IPalette } from '../../store';
+import { IPalette, IAppState } from '../../store';
 
 @Component({
   selector: 'app-palette-json',
@@ -10,7 +10,7 @@ import { IPalette } from '../../store';
   styleUrls: ['./json.component.scss']
 })
 export class JsonComponent implements OnInit {
-  constructor() { }
+  constructor(private _ngRedux: NgRedux<IAppState>) { }
   @select() palette$: Observable<IPalette>;
 
   ngOnInit(): void {

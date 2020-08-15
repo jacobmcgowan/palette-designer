@@ -22,8 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdditionalPaintComponent } from './palette/design/additional-paint/additional-paint.component';
 import { AppComponent } from './app.component';
-import { ColorConverterService } from './palette/color-converter.service';
+import { ColorConverterService } from './palette/design/color-converter/color-converter.service';
 import { DesignComponent } from './palette/design/design.component';
+import { FileService } from './shared/file/file.service';
 import { GeneralComponent } from './palette/design/general/general.component';
 import { IAppState, INITIAL_STATE, rootReducer } from './store';
 import { JsonComponent } from './palette/json/json.component';
@@ -66,6 +67,7 @@ import { SpacerComponent } from './shared/spacer/spacer.component';
   ],
   providers: [
     ColorConverterService,
+    FileService,
     {
       provide: MAT_COLOR_FORMATS,
       useValue: NGX_MAT_COLOR_FORMATS,

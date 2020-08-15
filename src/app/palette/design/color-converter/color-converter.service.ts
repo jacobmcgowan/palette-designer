@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Color as FormColor } from '@angular-material-components/color-picker';
 
-import { Color, IColor } from '../store';
+import { Color, IColor } from '../../../store';
 
 @Injectable({
   providedIn: 'root'

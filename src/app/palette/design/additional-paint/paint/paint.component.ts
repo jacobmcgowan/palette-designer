@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-import { IPaint, Paint, IColor } from '../../../../store';
+import { IPaint, IColor } from '../../../../store';
 import { IPaintForm } from './i-paint-form';
-import { ColorConverterService } from 'src/app/palette/color-converter.service';
+import { ColorConverterService } from 'src/app/palette/design/color-converter/color-converter.service';
 
 @Component({
   selector: 'app-palette-design-additional-paint-paint[paint]',

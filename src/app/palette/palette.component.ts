@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../store';
+import { FileService } from '../shared/file/file.service';
 
 @Component({
   selector: 'app-palette',
@@ -6,16 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./palette.component.scss']
 })
 export class PaletteComponent implements OnInit {
-
-  constructor() { }
+  constructor(
+    private _ngRedux: NgRedux<IAppState>,
+    private _fileService: FileService
+  ) { }
 
   get title(): string {
     return 'Palette Designer';
   }
 
-  name = 'My Palette';
-
   ngOnInit(): void {
   }
 
+  save(): void {
+    this._ngRedux
+      .select(state => state.palette)
+      .subscribe(palette => {
+        const json = JSON.stringify(palette.toJson
+          ? palette.toJson()
+          : palette);
+        this._fileService.download(json, 'palette-design.json', 'application/json');
+      });
+  }
 }
