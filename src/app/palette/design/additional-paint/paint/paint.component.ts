@@ -58,16 +58,15 @@ export class PaintComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.paint && !changes.paint.isFirstChange()) {
-      if (!this._colorsMatch(changes.paint.previousValue.name, changes.paint.currentValue.name)) {
-        this.form.get('name')
-          .setValue(
-            this._colorConverterService.paletteToForm(changes.paint.currentValue.name),
-            { emitEvent: false }
-          );
+      if (changes.paint.previousValue.name !== changes.paint.currentValue.name) {
+        this.name.setValue(
+          this._colorConverterService.paletteToForm(changes.paint.currentValue.name),
+          { emitEvent: false }
+        );
       }
 
-      this._colorConverterService.setForm(this.form.get('background'), changes.paint.currentValue.background);
-      this._colorConverterService.setForm(this.form.get('textOnBackground'), changes.paint.currentValue.text);
+      this._colorConverterService.setForm(this.background, changes.paint.currentValue.background);
+      this._colorConverterService.setForm(this.textOnBackground, changes.paint.currentValue.text);
     }
   }
 
