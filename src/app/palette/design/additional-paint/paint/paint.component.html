@@ -10,7 +10,7 @@
 
 <mat-card [ngStyle]="{'border-left': '4px solid ' + paint.background.rgba}">
   <form [formGroup]="form">
-    <mat-card-content>
+    <mat-card-content fxLayout="column" fxLayoutGap="8px">
       <div fxLayout="row">
         <mat-form-field fxFlex="1 1">
           <mat-label>Name</mat-label>
@@ -24,7 +24,7 @@
         fxLayout="row"
         fxLayout.xs="column"
         fxLayoutGap="24px"
-        fxLayoutGap.xs="0">
+        fxLayoutGap.xs="8px">
         <mat-form-field fxFlex="1 1">
           <mat-label>Background</mat-label>
           <input

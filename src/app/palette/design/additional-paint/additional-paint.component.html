@@ -9,7 +9,10 @@
   </button>
 </div>
 
-<div *ngIf="(palette$ | async) as palette; else loading">
+<div
+  *ngIf="(palette$ | async) as palette; else loading"
+  fxLayout="column"
+  fxLayoutGap="8px">
   <app-palette-design-additional-paint-paint
     *ngFor="let paint of palette.additionalPaint; index as idx; trackBy: identify"
     [paint]="paint"

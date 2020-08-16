@@ -1,8 +1,41 @@
 :host {
   width: 100%;
+
+  ::ng-deep {
+    mat-tab-header {
+      z-index: 199;
+      width: 100%;
+      background: white;
+      box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),
+        0 6px 10px 0 rgba(0,0,0,.14),
+        0 1px 18px 0 rgba(0,0,0,.12)
+    }
+
+    .mat-tab-body-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      overflow: auto;
+      position: absolute;
+      top: 112px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fafafa;
+
+      @media screen and (max-width: 599px) {
+        top: 104px;
+      }
+  
+      @media screen and (min-width: 600px) {
+        top: 112px;
+      }
+    }
+  }
 }
 
 mat-toolbar {
+  z-index: 200;
   width: 100%;
 
   mat-toolbar-row {

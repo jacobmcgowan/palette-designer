@@ -1,7 +1,16 @@
-<div fxLayout="row" fxLayout.sm="column">
-  <div fxFlex="1 1" fxLayout="column" fxLayoutGap="24px">
+<div fxLayout="row" fxLayout.lt-md="column">
+  <div
+    fxFlex="1 1"
+    fxLayout="column"
+    fxLayoutGap="24px"
+    fxFlexOrder="1"
+    fxFlexOrder.lt-md="2">
     <app-palette-design-theme></app-palette-design-theme>
     <app-palette-design-additional-paint></app-palette-design-additional-paint>
   </div>
-  <app-palette-design-preview fxFlex="1 1"></app-palette-design-preview>
+  <app-palette-design-preview
+    fxFlex="1 1"
+    fxFlexOrder="2"
+    fxFlexOrder.lt-md="1">
+  </app-palette-design-preview>
 </div>
