@@ -1,6 +1,8 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
+import { first } from 'rxjs/operators';
+
 import { AppState } from '../store';
 import { FileService } from '../shared/file/file.service';
 import { IUpdatePaletteAction, ActionType } from '../store';
@@ -33,6 +35,7 @@ export class PaletteComponent implements OnInit {
   save(): void {
     this._ngRedux
       .select(state => state.palette)
+      .pipe(first())
       .subscribe(palette => {
         const json = JSON.stringify(palette.toJson
           ? palette.toJson()

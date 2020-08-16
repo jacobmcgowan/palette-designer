@@ -2,8 +2,8 @@
 
 @include mat-core();
 
-$app-light-primary: mat-palette($mat-light-green, 500);
-$app-light-accent: mat-palette($mat-brown, 500, 400, 700);
+$app-light-primary: mat-palette($mat-blue-grey, 700);
+$app-light-accent: mat-palette($mat-green, 300, 200, 600);
 $app-light-warn: mat-palette($mat-red, 500);
 $app-light-theme: mat-light-theme((
   color: (
