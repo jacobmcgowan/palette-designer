@@ -11,7 +11,7 @@
         <mat-card
           [ngStyle]="{'background': palette.theme.surface.background.rgba, 'color': palette.theme.surface.text.rgba}">
           <mat-card-header>
-            <mat-card-title>Surface</mat-card-title>
+            <mat-card-title>Example 1</mat-card-title>
           </mat-card-header>
           <mat-card-content>
             <p>
@@ -28,6 +28,30 @@
             <button
               mat-raised-button
               [ngStyle]="{'background': palette.theme.secondary.background.rgba, 'color': palette.theme.secondary.text.rgba}">
+              OK
+            </button>
+          </mat-card-actions>
+        </mat-card>
+        <mat-card
+          [ngStyle]="{'background': palette.theme.surface.background.rgba, 'color': palette.theme.surface.text.rgba}">
+          <mat-card-header>
+            <mat-card-title>Example 2</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </mat-card-content>
+          <mat-card-actions fxLayoutAlign="end">
+            <button
+              mat-button
+              [ngStyle]="{'color': palette.theme.warn.background.rgba}">
+              Cancel
+            </button>
+            <button
+              mat-button
+              [ngStyle]="{'color': palette.theme.primary.background.rgba}">
               OK
             </button>
           </mat-card-actions>
