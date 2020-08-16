@@ -93,9 +93,7 @@ export class ThemeComponent implements OnInit {
 
     if (!this.form) {
       this.form = new FormGroup({
-        name: new FormControl(newName, [
-          Validators.required
-        ]),
+        name: new FormControl(newName, [ Validators.required ]),
         background: new FormControl(
           this._colorConverterService.paletteToForm(newBackground),
           [

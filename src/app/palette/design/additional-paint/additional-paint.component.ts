@@ -34,7 +34,7 @@ export class AdditionalPaintComponent implements OnInit {
       type: ActionType.AddAdditionalPaint,
       paint: {
         id: uuidv4(),
-        name: '',
+        name: 'Teal',
         background: {
           r: 0,
           g: 150,

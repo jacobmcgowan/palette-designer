@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges, OnChanges } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 import { IPaint, IColor } from '../../../../store';
 import { IPaintForm } from './i-paint-form';
 import { ColorConverterService } from 'src/app/palette/design/color-converter/color-converter.service';
+import { invalidColorValidator } from '../../invalid-color-validator';
 
 @Component({
   selector: 'app-palette-design-additional-paint-paint[paint]',
@@ -18,15 +19,41 @@ export class PaintComponent implements OnInit, OnChanges {
   @Output() removed = new EventEmitter<void>();
   form: FormGroup;
 
+  get name(): AbstractControl {
+    return this.form.get('name');
+  }
+
+  get background(): AbstractControl {
+    return this.form.get('background');
+  }
+
+  get textOnBackground(): AbstractControl {
+    return this.form.get('textOnBackground');
+  }
+
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl(this.paint.name),
-      background: new FormControl(this._colorConverterService.paletteToForm(this.paint.background)),
-      textOnBackground: new FormControl(this._colorConverterService.paletteToForm(this.paint.text)),
+      name: new FormControl(this.paint.name, [ Validators.required ]),
+      background: new FormControl(
+        this._colorConverterService.paletteToForm(this.paint.background),
+        [
+          invalidColorValidator
+        ]
+      ),
+      textOnBackground: new FormControl(
+        this._colorConverterService.paletteToForm(this.paint.text),
+        [
+          invalidColorValidator
+        ]
+      ),
     });
 
     this.form.valueChanges
-      .subscribe(value => this._update(value));
+      .subscribe(value => {
+        if (this.form.valid) {
+          this._update(value);
+        }
+      });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
