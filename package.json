@@ -1,6 +1,11 @@
 {
   "name": "palette-designer",
   "version": "0.0.0",
+  "description": "A UI theme design tool",
+  "author": {
+    "name": "Jacob McGowan",
+    "email": "jacobmcgowan78@gmail.com"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
