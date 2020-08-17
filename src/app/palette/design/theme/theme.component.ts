@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { ColorConverterService } from '../color-converter/color-converter.service';
 import { IThemeForm } from './i-theme-form';
-import { IUpdateThemeAction, IPalette, AppState, ActionType, IColor } from '../../../store';
+import { IUpdateThemeAction, Palette, AppState, ActionType, Color } from '../../../store';
 import { invalidColorValidator } from '../invalid-color-validator';
 
 @Component({
@@ -20,7 +20,7 @@ export class ThemeComponent implements OnInit {
   ) {
   }
 
-  @select() palette$: Observable<IPalette>;
+  @select() palette$: Observable<Palette>;
   form: FormGroup;
   private _backgroundId: string;
   private _surfaceId: string;
@@ -73,7 +73,7 @@ export class ThemeComponent implements OnInit {
       .subscribe(palette => this._updateForm(palette));
   }
 
-  private _updateForm(palette: IPalette): void {
+  private _updateForm(palette: Palette): void {
     const newName = palette.theme.name;
     const newBackground = palette.theme.background.background;
     const newTextOnBackground = palette.theme.background.text;

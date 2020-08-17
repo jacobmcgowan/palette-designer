@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Color as FormColor } from '@angular-material-components/color-picker';
 
-import { IColor } from '../../../store';
+import { Color } from '../../../store';
 import { ColorConverterService } from './color-converter.service';
 import { FormControl } from '@angular/forms';
 
@@ -20,7 +20,7 @@ describe('ColorConverterService', () => {
   it('matches should return false if a property does not match', () => {
     // Arrange
     const formColor = new FormColor(255, 255, 255, 1);
-    const colors: IColor[] = [{
+    const colors: Color[] = [{
       r: 0,
       g: 255,
       b: 255,
@@ -51,7 +51,7 @@ describe('ColorConverterService', () => {
   it('matches should return true if all properties match', () => {
     // Arrange
     const formColor = new FormColor(255, 250, 245, 1);
-    const color: IColor = {
+    const color: Color = {
       r: 255,
       g: 250,
       b: 245,
@@ -65,7 +65,7 @@ describe('ColorConverterService', () => {
 
   it('paintToForm should return matching color', () => {
     // Arrange
-    const color: IColor = {
+    const color: Color = {
       r: 255,
       g: 250,
       b: 245,
@@ -93,7 +93,7 @@ describe('ColorConverterService', () => {
   it('setForm should not set form if colors match', () => {
     // Arrange
     const formColor = new FormColor(255, 250, 245, 1);
-    const color: IColor = {
+    const color: Color = {
       r: 255,
       g: 250,
       b: 245,
@@ -113,7 +113,7 @@ describe('ColorConverterService', () => {
   it('setForm should set form if colors do not match', () => {
     // Arrange
     const formColor = new FormColor(255, 250, 245, 1);
-    const color: IColor = {
+    const color: Color = {
       r: 255,
       g: 255,
       b: 225,

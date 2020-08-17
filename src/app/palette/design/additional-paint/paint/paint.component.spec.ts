@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MAT_COLOR_FORMATS, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 
 import { PaintComponent } from './paint.component';
-import { Paint, Color, IPaint } from 'src/app/store';
+import { PaintState, ColorState, Paint } from 'src/app/store';
 import { ColorConverterService } from '../../color-converter/color-converter.service';
 import { Component, ViewChild } from '@angular/core';
 
@@ -14,8 +14,8 @@ import { Component, ViewChild } from '@angular/core';
 })
 class TestWrapperComponent {
   @ViewChild(PaintComponent) paintComponent: any;
-  paint: IPaint;
-  onRemoved: Function;
+  paint: Paint;
+  onRemoved: () => void;
 }
 
 describe('PaintComponent', () => {
@@ -43,16 +43,16 @@ describe('PaintComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestWrapperComponent);
     testWrapper = fixture.componentInstance;
-    testWrapper.paint = new Paint({
+    testWrapper.paint = new PaintState({
       id: 'test',
       name: 'Test',
-      background: new Color({
+      background: new ColorState({
         r: 255,
         g: 255,
         b: 255,
         a: 1,
       }),
-      text: new Color({
+      text: new ColorState({
         r: 0,
         g: 0,
         b: 0,
@@ -90,16 +90,16 @@ describe('PaintComponent', () => {
     spyOn(component.textOnBackground, 'setValue');
 
     // Act
-    testWrapper.paint = new Paint({
+    testWrapper.paint = new PaintState({
       id: 'test',
       name: 'Test change',
-      background: new Color({
+      background: new ColorState({
         r: 255,
         g: 255,
         b: 255,
         a: 1,
       }),
-      text: new Color({
+      text: new ColorState({
         r: 0,
         g: 0,
         b: 0,
@@ -123,16 +123,16 @@ describe('PaintComponent', () => {
     spyOn(component.textOnBackground, 'setValue');
 
     // Act
-    testWrapper.paint = new Paint({
+    testWrapper.paint = new PaintState({
       id: 'test',
       name: 'Test',
-      background: new Color({
+      background: new ColorState({
         r: 0,
         g: 0,
         b: 0,
         a: 1,
       }),
-      text: new Color({
+      text: new ColorState({
         r: 0,
         g: 0,
         b: 0,
@@ -156,16 +156,16 @@ describe('PaintComponent', () => {
     spyOn(component.textOnBackground, 'setValue');
 
     // Act
-    testWrapper.paint = new Paint({
+    testWrapper.paint = new PaintState({
       id: 'test',
       name: 'Test',
-      background: new Color({
+      background: new ColorState({
         r: 255,
         g: 255,
         b: 255,
         a: 1,
       }),
-      text: new Color({
+      text: new ColorState({
         r: 100,
         g: 100,
         b: 100,

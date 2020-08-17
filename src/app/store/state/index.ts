@@ -1,10 +1,10 @@
 export * from './app-state';
-export * from './i-color';
-export * from './i-theme';
-export * from './i-paint';
-export * from './i-palette';
-
 export * from './color';
 export * from './theme';
 export * from './paint';
 export * from './palette';
+
+export * from './color-state';
+export * from './theme-state';
+export * from './paint-state';
+export * from './palette-state';

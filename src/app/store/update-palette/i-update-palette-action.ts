@@ -1,6 +1,6 @@
 import { IAction } from '../action';
-import { IPalette } from '../state';
+import { Palette } from '../state';
 
 export interface IUpdatePaletteAction extends IAction {
-  palette: IPalette;
+  palette: Palette;
 }

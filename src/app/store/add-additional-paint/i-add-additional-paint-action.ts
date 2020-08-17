@@ -1,6 +1,6 @@
 import { IAction } from '../action';
-import { IPaint } from '../state';
+import { Paint } from '../state';
 
 export interface IAddAdditionalPaintAction extends IAction {
-  paint: IPaint;
+  paint: Paint;
 }

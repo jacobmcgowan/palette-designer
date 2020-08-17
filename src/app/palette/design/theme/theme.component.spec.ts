@@ -4,7 +4,7 @@ import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing'
 
 import { ThemeComponent } from './theme.component';
 import { ColorConverterService } from '../color-converter/color-converter.service';
-import { IPalette, AppState, INITIAL_STATE } from 'src/app/store';
+import { Palette, AppState, INITIAL_STATE } from 'src/app/store';
 
 describe('ThemeComponent', () => {
   let component: ThemeComponent;
@@ -44,7 +44,7 @@ describe('ThemeComponent', () => {
   it('form should be set after palette loaded', () => {
     // Arrange
     const prevForm = component.form;
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -58,7 +58,7 @@ describe('ThemeComponent', () => {
 
   it('name should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -71,7 +71,7 @@ describe('ThemeComponent', () => {
 
   it('background should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -84,7 +84,7 @@ describe('ThemeComponent', () => {
 
   it('textOnBackground should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -97,7 +97,7 @@ describe('ThemeComponent', () => {
 
   it('surface should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -110,7 +110,7 @@ describe('ThemeComponent', () => {
 
   it('primary should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -123,7 +123,7 @@ describe('ThemeComponent', () => {
 
   it('textOnPrimary should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -136,7 +136,7 @@ describe('ThemeComponent', () => {
 
   it('secondary should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -149,7 +149,7 @@ describe('ThemeComponent', () => {
 
   it('textOnSecondary should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -162,7 +162,7 @@ describe('ThemeComponent', () => {
 
   it('warn should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);
@@ -175,7 +175,7 @@ describe('ThemeComponent', () => {
 
   it('textOnWarn should return form control', () => {
     // Arrange
-    const selector = MockNgRedux.getSelectorStub<AppState, IPalette>();
+    const selector = MockNgRedux.getSelectorStub<AppState, Palette>();
 
     // Act
     selector.next(INITIAL_STATE.palette);

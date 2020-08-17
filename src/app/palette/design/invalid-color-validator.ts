@@ -1,4 +1,4 @@
-import { IColor } from '../../store';
+import { Color } from '../../store';
 import { ValidatorFn } from '@angular/forms';
 
 export const invalidColorValidator: ValidatorFn = control => {

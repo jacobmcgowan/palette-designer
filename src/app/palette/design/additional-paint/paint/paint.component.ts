@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
-import { IPaint, IColor } from '../../../../store';
+import { Paint, Color } from '../../../../store';
 import { IPaintForm } from './i-paint-form';
 import { ColorConverterService } from 'src/app/palette/design/color-converter/color-converter.service';
 import { invalidColorValidator } from '../../invalid-color-validator';
@@ -17,12 +17,12 @@ export class PaintComponent implements OnInit, OnChanges {
   /**
    * The paint to display.
    */
-  @Input() paint: IPaint;
+  @Input() paint: Paint;
 
   /**
    * Callback to call when the paint's values are changed.
    */
-  @Output() updated = new EventEmitter<IPaint>();
+  @Output() updated = new EventEmitter<Paint>();
 
   /**
    * Callback to when the paint should be removed.
@@ -89,7 +89,7 @@ export class PaintComponent implements OnInit, OnChanges {
     this.removed.emit();
   }
 
-  private _colorsMatch(a: IColor, b: IColor): boolean {
+  private _colorsMatch(a: Color, b: Color): boolean {
     return a.r === b.r &&
       a.g === b.g &&
       a.b === b.b &&

@@ -3,13 +3,13 @@ import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
-import { IPaint } from '../../../store';
+import { Paint } from '../../../store';
 
 import {
   IAddAdditionalPaintAction,
   IUpdateAdditionalPaintAction,
   IRemoveAdditionalPaintAction,
-  IPalette,
+  Palette,
   AppState,
   ActionType
 } from '../../../store';
@@ -22,7 +22,7 @@ import {
 export class AdditionalPaintComponent {
   constructor(private _ngRedux: NgRedux<AppState>) { }
 
-  @select() palette$: Observable<IPalette>;
+  @select() palette$: Observable<Palette>;
 
   /**
    * Adds a paint.
@@ -54,7 +54,7 @@ export class AdditionalPaintComponent {
    * @param index The index of the paint to update.
    * @param paint The new values to set.
    */
-  update(index: number, paint: IPaint): void {
+  update(index: number, paint: Paint): void {
     this._ngRedux.dispatch<IUpdateAdditionalPaintAction>({
       type: ActionType.UpdateAdditionalPaint,
       index,
@@ -78,7 +78,7 @@ export class AdditionalPaintComponent {
    * @param paint The paint to identify.
    * @returns The identity of a paint.
    */
-  identify(paint: IPaint): string {
+  identify(paint: Paint): string {
     return paint.id;
   }
 }

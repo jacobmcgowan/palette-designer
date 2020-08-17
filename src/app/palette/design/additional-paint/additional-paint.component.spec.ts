@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockNgRedux, NgReduxTestingModule } from '@angular-redux/store/testing';
 
 import { AdditionalPaintComponent } from './additional-paint.component';
-import { ActionType, IPaint, IAddAdditionalPaintAction } from 'src/app/store';
+import { ActionType, Paint, IAddAdditionalPaintAction } from 'src/app/store';
 
 describe('AdditionalPaintComponent', () => {
   let component: AdditionalPaintComponent;
@@ -69,7 +69,7 @@ describe('AdditionalPaintComponent', () => {
     // Arrange
     const redux = MockNgRedux.getInstance();
     const index = 1;
-    const paint: IPaint = {
+    const paint: Paint = {
       id: 'test',
       name: 'Test',
       background: {
@@ -118,7 +118,7 @@ describe('AdditionalPaintComponent', () => {
   });
 
   it('identify returns the paint id', () => {
-    const paint: IPaint = {
+    const paint: Paint = {
       id: 'test',
       name: 'Test',
       background: {

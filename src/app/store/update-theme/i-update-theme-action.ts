@@ -1,6 +1,6 @@
 import { IAction } from '../action';
-import { ITheme } from '../state';
+import { Theme } from '../state';
 
 export interface IUpdateThemeAction extends IAction {
-  theme: ITheme;
+  theme: Theme;
 }

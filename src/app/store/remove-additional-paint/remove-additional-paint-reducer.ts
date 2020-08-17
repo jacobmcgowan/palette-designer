@@ -1,9 +1,9 @@
-import { AppState, Palette } from '../state';
+import { AppState, PaletteState } from '../state';
 import { IRemoveAdditionalPaintAction } from './i-remove-additional-paint-action';
 
 export function removeAdditionalPaint(state: AppState, action: IRemoveAdditionalPaintAction): AppState {
   return {
-    palette: new Palette({
+    palette: new PaletteState({
       theme: state.palette.theme,
       additionalPaint: [
         ...state.palette.additionalPaint.slice(0, action.index),

@@ -1,14 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { IPalette } from './i-palette';
-import { Palette } from './palette';
+import { PaletteState } from './palette-state';
 
 export interface AppState {
-  palette: IPalette;
+  palette: PaletteState;
 }
 
 export const INITIAL_STATE: AppState = {
-  palette: new Palette({
+  palette: new PaletteState({
     theme: {
       name: 'My Theme',
       background: {

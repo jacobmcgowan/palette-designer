@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Color as FormColor } from '@angular-material-components/color-picker';
 
-import { Color, IColor } from '../../../store';
+import { ColorState, Color } from '../../../store';
 import { AbstractControl } from '@angular/forms';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class ColorConverterService {
    * Converts a paint color to a form color.
    * @param color The color to convert.
    */
-  paintToForm(color: IColor): FormColor {
+  paintToForm(color: Color): FormColor {
     return new FormColor(
       color.r,
       color.g,
@@ -25,8 +25,8 @@ export class ColorConverterService {
    * Converts a form color to a paint color.
    * @param color The color to convert.
    */
-  formToPaint(color: FormColor): IColor {
-    return new Color(color as IColor);
+  formToPaint(color: FormColor): Color {
+    return new ColorState(color as Color);
   }
 
   /**
@@ -35,7 +35,7 @@ export class ColorConverterService {
    * @param formColor The form color to compare.
    * @returns Whether the colors match or not.
    */
-  matches(color: IColor, formColor: FormColor): boolean {
+  matches(color: Color, formColor: FormColor): boolean {
     return color.r === formColor.r &&
       color.g === formColor.g &&
       color.b === formColor.b &&
@@ -47,7 +47,7 @@ export class ColorConverterService {
    * @param control The form control to set the value of.
    * @param color The color to set.
    */
-  setForm(control: AbstractControl, color: IColor): void {
+  setForm(control: AbstractControl, color: Color): void {
     if (!this.matches(color, control.value)) {
       control.setValue(this.paintToForm(color), { emitEvent: false });
     }

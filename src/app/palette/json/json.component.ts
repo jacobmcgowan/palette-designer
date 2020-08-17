@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
-import { IPalette, AppState } from '../../store';
+import { Palette, AppState } from '../../store';
 
 @Component({
   selector: 'app-palette-json',
@@ -11,7 +11,7 @@ import { IPalette, AppState } from '../../store';
 })
 export class JsonComponent implements OnInit {
   constructor(private _ngRedux: NgRedux<AppState>) { }
-  @select() palette$: Observable<IPalette>;
+  @select() palette$: Observable<Palette>;
 
   ngOnInit(): void {
   }

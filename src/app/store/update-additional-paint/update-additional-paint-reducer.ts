@@ -1,9 +1,9 @@
-import { AppState, Palette, Paint } from '../state';
+import { AppState, PaletteState, PaintState } from '../state';
 import { IUpdateAdditionalPaintAction } from './i-update-additional-paint-action';
 
 export function updateAdditionalPaint(state: AppState, action: IUpdateAdditionalPaintAction): AppState {
   return {
-    palette: new Palette({
+    palette: new PaletteState({
       theme: state.palette.theme,
       additionalPaint: state.palette.additionalPaint
         .map((paint, index) => {
@@ -11,7 +11,7 @@ export function updateAdditionalPaint(state: AppState, action: IUpdateAdditional
             return paint;
           }
 
-          return new Paint(action.paint);
+          return new PaintState(action.paint);
         }),
     })
   };
