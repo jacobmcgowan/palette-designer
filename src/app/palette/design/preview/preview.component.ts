@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
@@ -9,11 +9,6 @@ import { IPalette } from '../../../store';
   templateUrl: './preview.component.html',
   styleUrls: ['./preview.component.scss']
 })
-export class PreviewComponent implements OnInit {
-  constructor() { }
-
+export class PreviewComponent {
   @select() palette$: Observable<IPalette>;
-
-  ngOnInit(): void {
-  }
 }
