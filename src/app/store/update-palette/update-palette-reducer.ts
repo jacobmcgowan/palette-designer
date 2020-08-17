@@ -1,7 +1,7 @@
 import { AppState, PaletteState } from '../state';
-import { IUpdatePaletteAction } from './i-update-palette-action';
+import { UpdatePaletteAction } from './update-palette-action';
 
-export function updatePalette(state: AppState, action: IUpdatePaletteAction): AppState {
+export function updatePalette(state: AppState, action: UpdatePaletteAction): AppState {
   return {
     palette: new PaletteState(action.palette),
   };

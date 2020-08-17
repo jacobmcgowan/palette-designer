@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 
 import { AppState } from '../store';
 import { FileService } from '../shared/file/file.service';
-import { IUpdatePaletteAction, ActionType } from '../store';
+import { UpdatePaletteAction, ActionType } from '../store';
 
 @Component({
   selector: 'app-palette',
@@ -61,7 +61,7 @@ export class PaletteComponent implements OnInit {
   private _updatePalette(contents: any): void {
     try {
       const json = JSON.parse(contents);
-      this._ngRedux.dispatch<IUpdatePaletteAction>({
+      this._ngRedux.dispatch<UpdatePaletteAction>({
         type: ActionType.UpdatePalette,
         palette: json,
       });

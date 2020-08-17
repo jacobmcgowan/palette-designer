@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, SimpleChanges, OnChange
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 
 import { Paint, Color } from '../../../../store';
-import { IPaintForm } from './i-paint-form';
+import { PaintForm } from './paint-form';
 import { ColorConverterService } from 'src/app/palette/design/color-converter/color-converter.service';
 import { invalidColorValidator } from '../../invalid-color-validator';
 
@@ -96,7 +96,7 @@ export class PaintComponent implements OnInit, OnChanges {
       a.a === b.a;
   }
 
-  private _update(value: IPaintForm): void {
+  private _update(value: PaintForm): void {
     this.updated.emit({
       id: this.paint.id,
       name: value.name,

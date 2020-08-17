@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockNgRedux, NgReduxTestingModule } from '@angular-redux/store/testing';
 
 import { AdditionalPaintComponent } from './additional-paint.component';
-import { ActionType, Paint, IAddAdditionalPaintAction } from 'src/app/store';
+import { ActionType, Paint } from 'src/app/store';
 
 describe('AdditionalPaintComponent', () => {
   let component: AdditionalPaintComponent;

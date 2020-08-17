@@ -6,9 +6,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { Paint } from '../../../store';
 
 import {
-  IAddAdditionalPaintAction,
-  IUpdateAdditionalPaintAction,
-  IRemoveAdditionalPaintAction,
+  AddAdditionalPaintAction,
+  UpdateAdditionalPaintAction,
+  RemoveAdditionalPaintAction,
   Palette,
   AppState,
   ActionType
@@ -28,7 +28,7 @@ export class AdditionalPaintComponent {
    * Adds a paint.
    */
   add(): void {
-    this._ngRedux.dispatch<IAddAdditionalPaintAction>({
+    this._ngRedux.dispatch<AddAdditionalPaintAction>({
       type: ActionType.AddAdditionalPaint,
       paint: {
         id: uuidv4(),
@@ -55,7 +55,7 @@ export class AdditionalPaintComponent {
    * @param paint The new values to set.
    */
   update(index: number, paint: Paint): void {
-    this._ngRedux.dispatch<IUpdateAdditionalPaintAction>({
+    this._ngRedux.dispatch<UpdateAdditionalPaintAction>({
       type: ActionType.UpdateAdditionalPaint,
       index,
       paint
@@ -67,7 +67,7 @@ export class AdditionalPaintComponent {
    * @param index The index of the paint to remove.
    */
   remove(index: number): void {
-    this._ngRedux.dispatch<IRemoveAdditionalPaintAction>({
+    this._ngRedux.dispatch<RemoveAdditionalPaintAction>({
       type: ActionType.RemoveAdditionalPaint,
       index
     });

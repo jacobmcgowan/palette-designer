@@ -1,7 +1,7 @@
 import { AppState, PaintState, PaletteState } from '../state';
-import { IAddAdditionalPaintAction } from './i-add-additional-paint-action';
+import { AddAdditionalPaintAction } from './add-additional-paint-action';
 
-export function addAdditionalPaint(state: AppState, action: IAddAdditionalPaintAction): AppState {
+export function addAdditionalPaint(state: AppState, action: AddAdditionalPaintAction): AppState {
   return {
     palette: new PaletteState({
       theme: state.palette.theme,

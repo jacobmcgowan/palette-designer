@@ -1,5 +1,5 @@
 import { AppState, ThemeState, PaletteState } from '../state';
-import { IUpdateThemeAction } from './i-update-theme-action';
+import { IUpdateThemeAction } from './update-theme-action';
 
 export function updateTheme(state: AppState, action: IUpdateThemeAction): AppState {
   return {

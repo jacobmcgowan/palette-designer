@@ -4,7 +4,7 @@ import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
 import { ColorConverterService } from '../color-converter/color-converter.service';
-import { IThemeForm } from './i-theme-form';
+import { ThemeForm } from './theme-form';
 import { IUpdateThemeAction, Palette, AppState, ActionType, Color } from '../../../store';
 import { invalidColorValidator } from '../invalid-color-validator';
 
@@ -173,7 +173,7 @@ export class ThemeComponent implements OnInit {
     }
   }
 
-  private _update(value: IThemeForm): void {
+  private _update(value: ThemeForm): void {
     this._ngRedux.dispatch<IUpdateThemeAction>({
       type: ActionType.UpdateTheme,
       theme: {
