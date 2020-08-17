@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { AppState } from '../store';
 import { FileService } from '../shared/file/file.service';
 import { UpdatePaletteAction, ActionType } from '../store';
+import { FileEvent } from '../shared/file/file-event';
 
 @Component({
   selector: 'app-palette',
@@ -45,9 +46,7 @@ export class PaletteComponent {
           : palette);
         this._fileService.download(json, `${palette.theme.name}.json`, 'application/json');
       }, () => {
-        this._snackBar.open('Failed to save file', 'Dismiss', {
-          panelClass: ['error']
-        });
+        this._snackBar.open('Failed to save file', 'Dismiss');
       });
   }
 
