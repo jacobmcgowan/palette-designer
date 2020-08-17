@@ -8,7 +8,11 @@ import { AbstractControl } from '@angular/forms';
   providedIn: 'root'
 })
 export class ColorConverterService {
-  paletteToForm(color: IColor): FormColor {
+  /**
+   * Converts a paint color to a form color.
+   * @param color The color to convert.
+   */
+  paintToForm(color: IColor): FormColor {
     return new FormColor(
       color.r,
       color.g,
@@ -17,10 +21,20 @@ export class ColorConverterService {
     );
   }
 
-  formToPalette(color: FormColor): IColor {
+  /**
+   * Converts a form color to a paint color.
+   * @param color The color to convert.
+   */
+  formToPaint(color: FormColor): IColor {
     return new Color(color as IColor);
   }
 
+  /**
+   * Checks if the given colors match.
+   * @param color The paint color to compare.
+   * @param formColor The form color to compare.
+   * @returns Whether the colors match or not.
+   */
   matches(color: IColor, formColor: FormColor): boolean {
     return color.r === formColor.r &&
       color.g === formColor.g &&
@@ -28,9 +42,14 @@ export class ColorConverterService {
       color.a === formColor.a;
   }
 
-  setForm(control: AbstractControl, color: IColor) {
+  /**
+   * Sets the value of a form control.
+   * @param control The form control to set the value of.
+   * @param color The color to set.
+   */
+  setForm(control: AbstractControl, color: IColor): void {
     if (!this.matches(color, control.value)) {
-      control.setValue(this.paletteToForm(color), { emitEvent: false });
+      control.setValue(this.paintToForm(color), { emitEvent: false });
     }
   }
 }

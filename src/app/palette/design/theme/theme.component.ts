@@ -95,55 +95,55 @@ export class ThemeComponent implements OnInit {
       this.form = new FormGroup({
         name: new FormControl(newName, [ Validators.required ]),
         background: new FormControl(
-          this._colorConverterService.paletteToForm(newBackground),
+          this._colorConverterService.paintToForm(newBackground),
           [
             invalidColorValidator
           ]
         ),
         textOnBackground: new FormControl(
-          this._colorConverterService.paletteToForm(newTextOnBackground),
+          this._colorConverterService.paintToForm(newTextOnBackground),
           [
             invalidColorValidator
           ]
         ),
         surface: new FormControl(
-          this._colorConverterService.paletteToForm(newSurface),
+          this._colorConverterService.paintToForm(newSurface),
           [
             invalidColorValidator
           ]
         ),
         primary: new FormControl(
-          this._colorConverterService.paletteToForm(newPrimary),
+          this._colorConverterService.paintToForm(newPrimary),
           [
             invalidColorValidator
           ]
         ),
         textOnPrimary: new FormControl(
-          this._colorConverterService.paletteToForm(newTextOnPrimary),
+          this._colorConverterService.paintToForm(newTextOnPrimary),
           [
             invalidColorValidator
           ]
         ),
         secondary: new FormControl(
-          this._colorConverterService.paletteToForm(newSecondary),
+          this._colorConverterService.paintToForm(newSecondary),
           [
             invalidColorValidator
           ]
         ),
         textOnSecondary: new FormControl(
-          this._colorConverterService.paletteToForm(newTextOnSecondary),
+          this._colorConverterService.paintToForm(newTextOnSecondary),
           [
             invalidColorValidator
           ]
         ),
         warn: new FormControl(
-          this._colorConverterService.paletteToForm(newWarn),
+          this._colorConverterService.paintToForm(newWarn),
           [
             invalidColorValidator
           ]
         ),
         textOnWarn: new FormControl(
-          this._colorConverterService.paletteToForm(newTextOnWarn),
+          this._colorConverterService.paintToForm(newTextOnWarn),
           [
             invalidColorValidator
           ]

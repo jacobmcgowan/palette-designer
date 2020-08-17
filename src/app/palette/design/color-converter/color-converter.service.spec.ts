@@ -63,7 +63,7 @@ describe('ColorConverterService', () => {
     expect(service.matches(color, formColor)).toBeTrue();
   });
 
-  it('paletteToForm should return matching color', () => {
+  it('paintToForm should return matching color', () => {
     // Arrange
     const color: IColor = {
       r: 255,
@@ -73,18 +73,18 @@ describe('ColorConverterService', () => {
     };
 
     // Act
-    const result = service.paletteToForm(color);
+    const result = service.paintToForm(color);
 
     // Assert
     expect(service.matches(color, result)).toBeTrue();
   });
 
-  it('formToPalette should return matching color', () => {
+  it('formToPaint should return matching color', () => {
     // Arrange
     const formColor = new FormColor(255, 250, 245, 1);
 
     // Act
-    const result = service.formToPalette(formColor);
+    const result = service.formToPaint(formColor);
 
     // Assert
     expect(service.matches(result, formColor)).toBeTrue();

@@ -14,9 +14,21 @@ import { invalidColorValidator } from '../../invalid-color-validator';
 export class PaintComponent implements OnInit, OnChanges {
   constructor(private _colorConverterService: ColorConverterService) { }
 
+  /**
+   * The paint to display.
+   */
   @Input() paint: IPaint;
+
+  /**
+   * Callback to call when the paint's values are changed.
+   */
   @Output() updated = new EventEmitter<IPaint>();
+
+  /**
+   * Callback to when the paint should be removed.
+   */
   @Output() removed = new EventEmitter<void>();
+
   form: FormGroup;
 
   get name(): AbstractControl {
@@ -35,13 +47,13 @@ export class PaintComponent implements OnInit, OnChanges {
     this.form = new FormGroup({
       name: new FormControl(this.paint.name, [ Validators.required ]),
       background: new FormControl(
-        this._colorConverterService.paletteToForm(this.paint.background),
+        this._colorConverterService.paintToForm(this.paint.background),
         [
           invalidColorValidator
         ]
       ),
       textOnBackground: new FormControl(
-        this._colorConverterService.paletteToForm(this.paint.text),
+        this._colorConverterService.paintToForm(this.paint.text),
         [
           invalidColorValidator
         ]
@@ -60,7 +72,7 @@ export class PaintComponent implements OnInit, OnChanges {
     if (changes.paint && !changes.paint.isFirstChange()) {
       if (changes.paint.previousValue.name !== changes.paint.currentValue.name) {
         this.name.setValue(
-          this._colorConverterService.paletteToForm(changes.paint.currentValue.name),
+          this._colorConverterService.paintToForm(changes.paint.currentValue.name),
           { emitEvent: false }
         );
       }
@@ -70,6 +82,9 @@ export class PaintComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * Signals that the paint should be removed.
+   */
   remove(): void {
     this.removed.emit();
   }

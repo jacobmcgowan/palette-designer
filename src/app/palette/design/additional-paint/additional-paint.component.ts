@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,8 +11,7 @@ import {
   IRemoveAdditionalPaintAction,
   IPalette,
   AppState,
-  ActionType,
-  Paint
+  ActionType
 } from '../../../store';
 
 @Component({
@@ -20,15 +19,14 @@ import {
   templateUrl: './additional-paint.component.html',
   styleUrls: ['./additional-paint.component.scss']
 })
-export class AdditionalPaintComponent implements OnInit {
-
+export class AdditionalPaintComponent {
   constructor(private _ngRedux: NgRedux<AppState>) { }
 
   @select() palette$: Observable<IPalette>;
 
-  ngOnInit(): void {
-  }
-
+  /**
+   * Adds a paint.
+   */
   add(): void {
     this._ngRedux.dispatch<IAddAdditionalPaintAction>({
       type: ActionType.AddAdditionalPaint,
@@ -51,6 +49,11 @@ export class AdditionalPaintComponent implements OnInit {
     });
   }
 
+  /**
+   * Updates a paint's values.
+   * @param index The index of the paint to update.
+   * @param paint The new values to set.
+   */
   update(index: number, paint: IPaint): void {
     this._ngRedux.dispatch<IUpdateAdditionalPaintAction>({
       type: ActionType.UpdateAdditionalPaint,
@@ -59,6 +62,10 @@ export class AdditionalPaintComponent implements OnInit {
     });
   }
 
+  /**
+   * Removes a paint.
+   * @param index The index of the paint to remove.
+   */
   remove(index: number): void {
     this._ngRedux.dispatch<IRemoveAdditionalPaintAction>({
       type: ActionType.RemoveAdditionalPaint,
@@ -66,8 +73,12 @@ export class AdditionalPaintComponent implements OnInit {
     });
   }
 
-  identify(index: number, paint: IPaint): string {
+  /**
+   * Identifies a paint.
+   * @param paint The paint to identify.
+   * @returns The identity of a paint.
+   */
+  identify(paint: IPaint): string {
     return paint.id;
   }
-
 }
