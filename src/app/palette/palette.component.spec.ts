@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaletteComponent } from './palette.component';
+import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FileService } from '../shared/file/file.service';
 
 describe('PaletteComponent', () => {
   let component: PaletteComponent;
@@ -8,7 +11,18 @@ describe('PaletteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PaletteComponent ]
+      declarations: [
+        PaletteComponent,
+      ],
+      imports: [
+        NgReduxTestingModule,
+        MatSnackBarModule,
+      ],
+      providers: [
+        MockNgRedux,
+        FileService,
+        
+      ]
     })
     .compileComponents();
   }));

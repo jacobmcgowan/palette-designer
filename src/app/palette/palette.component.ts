@@ -1,5 +1,5 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { first } from 'rxjs/operators';
 
@@ -12,7 +12,7 @@ import { UpdatePaletteAction, ActionType } from '../store';
   templateUrl: './palette.component.html',
   styleUrls: ['./palette.component.scss']
 })
-export class PaletteComponent implements OnInit {
+export class PaletteComponent {
   constructor(
     private _ngRedux: NgRedux<AppState>,
     private _fileService: FileService,
@@ -25,13 +25,16 @@ export class PaletteComponent implements OnInit {
     return 'Palette Designer';
   }
 
-  ngOnInit(): void {
-  }
-
+  /**
+   * Opens the open palette design file dialog.
+   */
   open(): void {
     this.fileInput.nativeElement.click();
   }
 
+  /**
+   * Downloads the palette design file.
+   */
   save(): void {
     this._ngRedux
       .select(state => state.palette)
@@ -41,21 +44,20 @@ export class PaletteComponent implements OnInit {
           ? palette.toJson()
           : palette);
         this._fileService.download(json, `${palette.theme.name}.json`, 'application/json');
-      }, error => {
+      }, () => {
         this._snackBar.open('Failed to save file', 'Dismiss', {
           panelClass: ['error']
         });
       });
   }
 
+  /**
+   * Parses the selected palette design file.
+   * @param fileEvent The file load event.
+   */
   fileChanged(fileEvent: any): void {
-    if (fileEvent.target.files && fileEvent.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (loadEvent) => this._updatePalette(loadEvent.target.result);
-
-      reader.readAsText(fileEvent.target.files[0]);
-      this.fileInput.nativeElement.value = null;
-    }
+    this._fileService.load(fileEvent, contents => this._updatePalette(contents));
+    this.fileInput.nativeElement.value = null;
   }
 
   private _updatePalette(contents: any): void {
