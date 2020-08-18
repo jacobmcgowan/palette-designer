@@ -48,3 +48,15 @@ mat-toolbar {
 input[type="file"] {
   display: none;
 }
+
+a.mat-icon-button {
+  margin: 0 16px 0 16px;
+}
+
+.white-icon {
+  color: white;
+
+  svg {
+    color: white;
+  }
+}
