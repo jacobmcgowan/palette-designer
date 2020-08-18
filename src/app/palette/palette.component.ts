@@ -26,7 +26,7 @@ export class PaletteComponent {
   ) {
     this._iconRegistry.addSvgIcon(
       'github',
-      this._domSanitizer.bypassSecurityTrustResourceUrl('../assets/github.svg')
+      this._domSanitizer.bypassSecurityTrustResourceUrl('assets/github.svg')
     );
   }
 
