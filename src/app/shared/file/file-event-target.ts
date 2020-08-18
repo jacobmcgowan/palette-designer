@@ -1,3 +1,3 @@
-export interface FileEventTarget extends EventTarget {
+export interface FileEventTarget {
   files: FileList;
 }

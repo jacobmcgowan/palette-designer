@@ -1,12 +1,13 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NgRedux } from '@angular-redux/store';
+import { NgRedux, select } from '@angular-redux/store';
 import { first } from 'rxjs/operators';
 
-import { AppState } from '../store';
+import { AppState, PaletteState } from '../store';
 import { FileService } from '../shared/file/file.service';
 import { UpdatePaletteAction, ActionType } from '../store';
 import { FileEvent } from '../shared/file/file-event';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-palette',
@@ -21,6 +22,7 @@ export class PaletteComponent {
   ) { }
 
   @ViewChild('file') fileInput: ElementRef;
+  @select() palette$: Observable<PaletteState>;
 
   get title(): string {
     return 'Palette Designer';
@@ -37,16 +39,22 @@ export class PaletteComponent {
    * Downloads the palette design file.
    */
   save(): void {
-    this._ngRedux
-      .select(state => state.palette)
+    const failedMessage = 'Failed to save file';
+    const dismissAction = 'Dismiss';
+    this.palette$
       .pipe(first())
-      .subscribe(palette => {
-        const json = JSON.stringify(palette.toJson
-          ? palette.toJson()
-          : palette);
-        this._fileService.download(json, `${palette.theme.name}.json`, 'application/json');
-      }, () => {
-        this._snackBar.open('Failed to save file', 'Dismiss');
+      .subscribe({
+        next: palette => {
+          try {
+          const json = JSON.stringify(palette.toJson
+            ? palette.toJson()
+            : palette);
+          this._fileService.download(json, `${palette.theme.name}.json`, 'application/json');
+          } catch (error) {
+            this._snackBar.open(failedMessage, dismissAction);
+          }
+        },
+        error: () => this._snackBar.open(failedMessage, dismissAction)
       });
   }
 

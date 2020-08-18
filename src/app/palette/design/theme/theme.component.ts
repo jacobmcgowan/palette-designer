@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { ColorConverterService } from '../color-converter/color-converter.service';
 import { ThemeForm } from './theme-form';
-import { IUpdateThemeAction, Palette, AppState, ActionType, Color } from '../../../store';
+import { IUpdateThemeAction, Palette, AppState, ActionType, Color, PaletteState } from '../../../store';
 import { invalidColorValidator } from '../invalid-color-validator';
 
 @Component({
@@ -20,7 +20,7 @@ export class ThemeComponent implements OnInit {
   ) {
   }
 
-  @select() palette$: Observable<Palette>;
+  @select() palette$: Observable<PaletteState>;
   form: FormGroup;
   private _backgroundId: string;
   private _surfaceId: string;
