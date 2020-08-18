@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore } from 'redux';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule } from '@angular/common/http';
 import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -50,6 +51,7 @@ import { ThemeComponent } from './palette/design/theme/theme.component';
     BrowserAnimationsModule,
     BrowserModule,
     FlexLayoutModule,
+    HttpClientModule,
     MatButtonModule,
     MatCardModule,
     MatChipsModule,

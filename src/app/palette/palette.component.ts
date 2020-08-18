@@ -8,6 +8,8 @@ import { FileService } from '../shared/file/file.service';
 import { UpdatePaletteAction, ActionType } from '../store';
 import { FileEvent } from '../shared/file/file-event';
 import { Observable } from 'rxjs';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-palette',
@@ -18,8 +20,15 @@ export class PaletteComponent {
   constructor(
     private _ngRedux: NgRedux<AppState>,
     private _fileService: FileService,
-    private _snackBar: MatSnackBar
-  ) { }
+    private _snackBar: MatSnackBar,
+    private _iconRegistry: MatIconRegistry,
+    private _domSanitizer: DomSanitizer
+  ) {
+    this._iconRegistry.addSvgIcon(
+      'github',
+      this._domSanitizer.bypassSecurityTrustResourceUrl('../assets/github.svg')
+    );
+  }
 
   @ViewChild('file') fileInput: ElementRef;
   @select() palette$: Observable<PaletteState>;
@@ -62,7 +71,7 @@ export class PaletteComponent {
    * Parses the selected palette design file.
    * @param fileEvent The file load event.
    */
-  fileChanged(fileEvent: any): void {
+  fileChanged(fileEvent: FileEvent): void {
     this._fileService.load(fileEvent, contents => this._updatePalette(contents));
     this.fileInput.nativeElement.value = null;
   }
