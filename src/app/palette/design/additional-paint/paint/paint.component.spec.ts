@@ -1,10 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MAT_COLOR_FORMATS, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
+import { Component, ViewChild, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MAT_COLOR_FORMATS, NGX_MAT_COLOR_FORMATS, NgxMatColorPickerModule } from '@angular-material-components/color-picker';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { PaintComponent } from './paint.component';
 import { PaintState, ColorState, Paint } from 'src/app/store';
 import { ColorConverterService } from '../../color-converter/color-converter.service';
-import { Component, ViewChild } from '@angular/core';
 
 @Component({
   template: `<app-palette-design-additional-paint-paint
@@ -29,12 +30,19 @@ describe('PaintComponent', () => {
         PaintComponent,
         TestWrapperComponent,
       ],
+      imports: [
+        NgxMatColorPickerModule,
+        ReactiveFormsModule,
+      ],
       providers: [
         ColorConverterService,
         {
           provide: MAT_COLOR_FORMATS,
           useValue: NGX_MAT_COLOR_FORMATS,
         }
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
       ]
     })
     .compileComponents();

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MAT_COLOR_FORMATS, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MAT_COLOR_FORMATS, NGX_MAT_COLOR_FORMATS, NgxMatColorPickerModule } from '@angular-material-components/color-picker';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ThemeComponent } from './theme.component';
 import { ColorConverterService } from '../color-converter/color-converter.service';
@@ -17,6 +19,8 @@ describe('ThemeComponent', () => {
       ],
       imports: [
         NgReduxTestingModule,
+        NgxMatColorPickerModule,
+        ReactiveFormsModule,
       ],
       providers: [
         MockNgRedux,
@@ -25,6 +29,9 @@ describe('ThemeComponent', () => {
           provide: MAT_COLOR_FORMATS,
           useValue: NGX_MAT_COLOR_FORMATS,
         }
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
       ]
     })
     .compileComponents();

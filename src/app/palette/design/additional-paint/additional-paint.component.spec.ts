@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MockNgRedux, NgReduxTestingModule } from '@angular-redux/store/testing';
 
 import { AdditionalPaintComponent } from './additional-paint.component';
@@ -18,6 +19,9 @@ describe('AdditionalPaintComponent', () => {
       ],
       providers: [
         MockNgRedux,
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
       ]
     })
     .compileComponents();

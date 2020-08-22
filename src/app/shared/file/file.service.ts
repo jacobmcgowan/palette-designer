@@ -30,7 +30,6 @@ export class FileService {
    * @param fileLoaded Callback to call when the file is loaded.
    */
   load(fileEvent: FileEvent, fileLoaded: FileLoadedCallback): void {
-    console.log(fileEvent);
     if (fileEvent.target.files && fileEvent.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (loadEvent) => fileLoaded(loadEvent.target.result as string);

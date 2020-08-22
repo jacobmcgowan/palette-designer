@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { PaletteComponent } from './palette.component';
 import { NgReduxTestingModule, MockNgRedux } from '@angular-redux/store/testing';
@@ -39,6 +40,9 @@ describe('PaletteComponent', () => {
           provide: MatSnackBar,
           useValue: mockSnackBar,
         }
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
       ]
     })
     .compileComponents();
@@ -65,7 +69,23 @@ describe('PaletteComponent', () => {
   });
 
   it('fileChanged should trigger file load', () => {
-    component.fileChanged({});
+    // Arrange
+    const file = new Blob([''], {
+      type: 'application/json'
+    }) as File;
+
+    // Act
+    component.fileChanged({
+      target: {
+        files: {
+          0: file,
+          length: 1,
+          item: (index) => file,
+        },
+      },
+    });
+
+    // Assert
     expect(mockFileService.load).toHaveBeenCalled();
   });
 
