@@ -72,7 +72,7 @@ export class PaintComponent implements OnInit, OnChanges {
     if (changes.paint && !changes.paint.isFirstChange()) {
       if (changes.paint.previousValue.name !== changes.paint.currentValue.name) {
         this.name.setValue(
-          this._colorConverterService.paintToForm(changes.paint.currentValue.name),
+          changes.paint.currentValue.name,
           { emitEvent: false }
         );
       }
