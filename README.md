@@ -3,6 +3,10 @@
 Palette Designer is a UI theme design tool that allows you to add and preview
 as many colors as needed.
 
+## Site
+
+Visit https://jacobmcgowan.github.io/palette-designer.
+
 ## Setup
 
 ### Prerequisites
